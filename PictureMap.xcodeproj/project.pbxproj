@@ -1,0 +1,903 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201088596B4756681693704 /* libThree20UICommon.a */; };
+		320A2827FEC940B25BC42C65 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A2827FEC940B25BC42C64 /* libThree20Core.a */; };
+		320A5A189C235877202780D5 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A5A189C235877202780D4 /* libThree20Network.a */; };
+		320A737074758E53BA54BE95 /* libThree20UINavigator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A737074758E53BA54BE94 /* libThree20UINavigator.a */; };
+		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
+		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
+		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
+		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		F9036D1713B130D200A32774 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9036D1513B130D200A32774 /* Localizable.strings */; };
+		F9036D1913B130EC00A32774 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9036D1513B130D200A32774 /* Localizable.strings */; };
+		F91B92B313AE8D7000271FCE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91B92B213AE8D7000271FCE /* UIKit.framework */; };
+		F91B92B513AE8D7000271FCE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91B92B413AE8D7000271FCE /* Foundation.framework */; };
+		F91B92B713AE8D7000271FCE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91B92B613AE8D7000271FCE /* CoreGraphics.framework */; };
+		F91B92BD13AE8D7000271FCE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F91B92BB13AE8D7000271FCE /* InfoPlist.strings */; };
+		F91B92C013AE8D7000271FCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B92BF13AE8D7000271FCE /* main.m */; };
+		F91B92C313AE8D7000271FCE /* PictureMapAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B92C213AE8D7000271FCE /* PictureMapAppDelegate.m */; };
+		F91B93E013AE8F4400271FCE /* ALAssetAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93B813AE8F4400271FCE /* ALAssetAdditions.m */; };
+		F91B93E113AE8F4400271FCE /* AnnotationClusterer.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93BA13AE8F4400271FCE /* AnnotationClusterer.m */; };
+		F91B93E213AE8F4400271FCE /* AssetAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93BC13AE8F4400271FCE /* AssetAnnotation.m */; };
+		F91B93E313AE8F4400271FCE /* AssetClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93BE13AE8F4400271FCE /* AssetClusterAnnotation.m */; };
+		F91B93E413AE8F4400271FCE /* AssetController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93C013AE8F4400271FCE /* AssetController.m */; };
+		F91B93E513AE8F4400271FCE /* CountView.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93C213AE8F4400271FCE /* CountView.m */; };
+		F91B93E713AE8F4400271FCE /* PictureMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93D213AE8F4400271FCE /* PictureMapViewController.m */; };
+		F91B93E813AE8F4400271FCE /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93D513AE8F4400271FCE /* Photo.m */; };
+		F91B93E913AE8F4400271FCE /* PhotoAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93D713AE8F4400271FCE /* PhotoAnnotationView.m */; };
+		F91B93EA13AE8F4400271FCE /* PhotoSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93D913AE8F4400271FCE /* PhotoSet.m */; };
+		F91B93EB13AE8F4400271FCE /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93DB13AE8F4400271FCE /* PhotoViewController.m */; };
+		F91B93EC13AE8F4400271FCE /* UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93DD13AE8F4400271FCE /* UIImageAdditions.m */; };
+		F91B93ED13AE8F4400271FCE /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93DF13AE8F4400271FCE /* URLParser.m */; };
+		F91B93F713AE929800271FCE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91B93F613AE929800271FCE /* AssetsLibrary.framework */; };
+		F91B93F913AE92A500271FCE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91B93F813AE92A500271FCE /* CoreLocation.framework */; };
+		F91B93FB13AE92D400271FCE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91B93FA13AE92D400271FCE /* MapKit.framework */; };
+		F91B93FD13AE92DC00271FCE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91B93FC13AE92DC00271FCE /* MessageUI.framework */; };
+		F91B93FF13AE92FD00271FCE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91B93FE13AE92FD00271FCE /* QuartzCore.framework */; };
+		F91B94AF13AE9FA700271FCE /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F91B94AD13AE9FA700271FCE /* settings.png */; };
+		F91B94B013AE9FA700271FCE /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91B94AE13AE9FA700271FCE /* settings@2x.png */; };
+		F91B94B313AEA37B00271FCE /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B94B213AEA37A00271FCE /* SettingsViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3201088596B4756681693702 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3201088596B4756681693700 /* Three20UICommon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20UICommon;
+		};
+		3201088596B4756681693706 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3201088596B4756681693700 /* Three20UICommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20UICommon;
+		};
+		320A2827FEC940B25BC42C62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20Core;
+		};
+		320A2827FEC940B25BC42C66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20Core;
+		};
+		320A5A189C235877202780D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20Network;
+		};
+		320A5A189C235877202780D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20Network;
+		};
+		320A737074758E53BA54BE92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20UINavigator;
+		};
+		320A737074758E53BA54BE96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20UINavigator;
+		};
+		320CC833B8AF0ACFD35E6222 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20Style;
+		};
+		320CC833B8AF0ACFD35E6226 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20Style;
+		};
+		320D7DCCE32703ACAB9A45E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+		320D7DCCE32703ACAB9A45E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+		320F2C48872C2E2C4DF86202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20UI;
+		};
+		320F2C48872C2E2C4DF86206 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20UI;
+		};
+		F91B944813AE93EA00271FCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
+			remoteInfo = Three20UnitTests;
+		};
+		F91B944B13AE93EA00271FCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
+			remoteInfo = Three20CoreUnitTests;
+		};
+		F91B944E13AE93EA00271FCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
+			remoteInfo = Three20NetworkUnitTests;
+		};
+		F91B945113AE93EA00271FCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
+			remoteInfo = Three20StyleUnitTests;
+		};
+		F91B945413AE93EA00271FCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
+			remoteInfo = Three20UIUnitTests;
+		};
+		F91B945713AE93EA00271FCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3201088596B4756681693700 /* Three20UICommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
+			remoteInfo = Three20UICommonUnitTests;
+		};
+		F91B945A13AE93EA00271FCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
+			remoteInfo = Three20UINavigatorUnitTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3201088596B4756681693700 /* Three20UICommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UICommon.xcodeproj; path = ../three20/src/Three20UICommon/Three20UICommon.xcodeproj; sourceTree = SOURCE_ROOT; };
+		320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
+		320A5A189C235877202780D0 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = ../three20/src/Three20Network/Three20Network.xcodeproj; sourceTree = SOURCE_ROOT; };
+		320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UINavigator.xcodeproj; path = ../three20/src/Three20UINavigator/Three20UINavigator.xcodeproj; sourceTree = SOURCE_ROOT; };
+		320AF8492C47A4D819F7C450 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
+		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
+		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		F9036D1613B130D200A32774 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F9036D1813B130EC00A32774 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F91B92AE13AE8D7000271FCE /* PictureMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PictureMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F91B92B213AE8D7000271FCE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F91B92B413AE8D7000271FCE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F91B92B613AE8D7000271FCE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F91B92BA13AE8D7000271FCE /* PictureMap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PictureMap-Info.plist"; sourceTree = "<group>"; };
+		F91B92BC13AE8D7000271FCE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F91B92BE13AE8D7000271FCE /* PictureMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PictureMap-Prefix.pch"; sourceTree = "<group>"; };
+		F91B92BF13AE8D7000271FCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F91B92C113AE8D7000271FCE /* PictureMapAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureMapAppDelegate.h; sourceTree = "<group>"; };
+		F91B92C213AE8D7000271FCE /* PictureMapAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureMapAppDelegate.m; sourceTree = "<group>"; };
+		F91B93B713AE8F4400271FCE /* ALAssetAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALAssetAdditions.h; path = Classes/ALAssetAdditions.h; sourceTree = "<group>"; };
+		F91B93B813AE8F4400271FCE /* ALAssetAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALAssetAdditions.m; path = Classes/ALAssetAdditions.m; sourceTree = "<group>"; };
+		F91B93B913AE8F4400271FCE /* AnnotationClusterer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnnotationClusterer.h; path = Classes/AnnotationClusterer.h; sourceTree = "<group>"; };
+		F91B93BA13AE8F4400271FCE /* AnnotationClusterer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnnotationClusterer.m; path = Classes/AnnotationClusterer.m; sourceTree = "<group>"; };
+		F91B93BB13AE8F4400271FCE /* AssetAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetAnnotation.h; path = Classes/AssetAnnotation.h; sourceTree = "<group>"; };
+		F91B93BC13AE8F4400271FCE /* AssetAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetAnnotation.m; path = Classes/AssetAnnotation.m; sourceTree = "<group>"; };
+		F91B93BD13AE8F4400271FCE /* AssetClusterAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetClusterAnnotation.h; path = Classes/AssetClusterAnnotation.h; sourceTree = "<group>"; };
+		F91B93BE13AE8F4400271FCE /* AssetClusterAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetClusterAnnotation.m; path = Classes/AssetClusterAnnotation.m; sourceTree = "<group>"; };
+		F91B93BF13AE8F4400271FCE /* AssetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetController.h; path = Classes/AssetController.h; sourceTree = "<group>"; };
+		F91B93C013AE8F4400271FCE /* AssetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetController.m; path = Classes/AssetController.m; sourceTree = "<group>"; };
+		F91B93C113AE8F4400271FCE /* CountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountView.h; path = Classes/CountView.h; sourceTree = "<group>"; };
+		F91B93C213AE8F4400271FCE /* CountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountView.m; path = Classes/CountView.m; sourceTree = "<group>"; };
+		F91B93D113AE8F4400271FCE /* PictureMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PictureMapViewController.h; path = Classes/PictureMapViewController.h; sourceTree = "<group>"; };
+		F91B93D213AE8F4400271FCE /* PictureMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PictureMapViewController.m; path = Classes/PictureMapViewController.m; sourceTree = "<group>"; };
+		F91B93D413AE8F4400271FCE /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Classes/Photo.h; sourceTree = "<group>"; };
+		F91B93D513AE8F4400271FCE /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Classes/Photo.m; sourceTree = "<group>"; };
+		F91B93D613AE8F4400271FCE /* PhotoAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoAnnotationView.h; path = Classes/PhotoAnnotationView.h; sourceTree = "<group>"; };
+		F91B93D713AE8F4400271FCE /* PhotoAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoAnnotationView.m; path = Classes/PhotoAnnotationView.m; sourceTree = "<group>"; };
+		F91B93D813AE8F4400271FCE /* PhotoSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoSet.h; path = Classes/PhotoSet.h; sourceTree = "<group>"; };
+		F91B93D913AE8F4400271FCE /* PhotoSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoSet.m; path = Classes/PhotoSet.m; sourceTree = "<group>"; };
+		F91B93DA13AE8F4400271FCE /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoViewController.h; path = Classes/PhotoViewController.h; sourceTree = "<group>"; };
+		F91B93DB13AE8F4400271FCE /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoViewController.m; path = Classes/PhotoViewController.m; sourceTree = "<group>"; };
+		F91B93DC13AE8F4400271FCE /* UIImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageAdditions.h; path = Classes/UIImageAdditions.h; sourceTree = "<group>"; };
+		F91B93DD13AE8F4400271FCE /* UIImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageAdditions.m; path = Classes/UIImageAdditions.m; sourceTree = "<group>"; };
+		F91B93DE13AE8F4400271FCE /* URLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLParser.h; path = Classes/URLParser.h; sourceTree = "<group>"; };
+		F91B93DF13AE8F4400271FCE /* URLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLParser.m; path = Classes/URLParser.m; sourceTree = "<group>"; };
+		F91B93F613AE929800271FCE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		F91B93F813AE92A500271FCE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F91B93FA13AE92D400271FCE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F91B93FC13AE92DC00271FCE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		F91B93FE13AE92FD00271FCE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F91B94AD13AE9FA700271FCE /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = Ressources/settings.png; sourceTree = "<group>"; };
+		F91B94AE13AE9FA700271FCE /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Ressources/settings@2x.png"; sourceTree = "<group>"; };
+		F91B94B113AEA37A00271FCE /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Classes/SettingsViewController.h; sourceTree = "<group>"; };
+		F91B94B213AEA37A00271FCE /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Classes/SettingsViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F91B92AB13AE8D7000271FCE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */,
+				320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */,
+				320A737074758E53BA54BE95 /* libThree20UINavigator.a in Frameworks */,
+				320A2827FEC940B25BC42C65 /* libThree20Core.a in Frameworks */,
+				320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */,
+				320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */,
+				320A5A189C235877202780D5 /* libThree20Network.a in Frameworks */,
+				320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */,
+				F91B92B313AE8D7000271FCE /* UIKit.framework in Frameworks */,
+				F91B92B513AE8D7000271FCE /* Foundation.framework in Frameworks */,
+				F91B92B713AE8D7000271FCE /* CoreGraphics.framework in Frameworks */,
+				F91B93F713AE929800271FCE /* AssetsLibrary.framework in Frameworks */,
+				F91B93F913AE92A500271FCE /* CoreLocation.framework in Frameworks */,
+				F91B93FB13AE92D400271FCE /* MapKit.framework in Frameworks */,
+				F91B93FD13AE92DC00271FCE /* MessageUI.framework in Frameworks */,
+				F91B93FF13AE92FD00271FCE /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3201088596B4756681693703 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3201088596B4756681693704 /* libThree20UICommon.a */,
+				F91B945813AE93EA00271FCE /* UICommonUnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		320A2827FEC940B25BC42C63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				320A2827FEC940B25BC42C64 /* libThree20Core.a */,
+				F91B944C13AE93EA00271FCE /* CoreUnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		320A5A189C235877202780D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				320A5A189C235877202780D4 /* libThree20Network.a */,
+				F91B944F13AE93EA00271FCE /* NetworkUnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		320A737074758E53BA54BE93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				320A737074758E53BA54BE94 /* libThree20UINavigator.a */,
+				F91B945B13AE93EA00271FCE /* UINavigatorUnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		320CC833B8AF0ACFD35E6223 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				320CC833B8AF0ACFD35E6224 /* libThree20Style.a */,
+				F91B945213AE93EA00271FCE /* StyleUnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		320D7DCCE32703ACAB9A45E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				320D7DCCE32703ACAB9A45E4 /* libThree20.a */,
+				F91B944913AE93EA00271FCE /* Three20UnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		320F2C48872C2E2C4DF86203 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				320F2C48872C2E2C4DF86204 /* libThree20UI.a */,
+				F91B945513AE93EA00271FCE /* UIUnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F91B92A313AE8D7000271FCE = {
+			isa = PBXGroup;
+			children = (
+				F91B92B813AE8D7000271FCE /* PictureMap */,
+				F91B92B113AE8D7000271FCE /* Frameworks */,
+				F91B92AF13AE8D7000271FCE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F91B92AF13AE8D7000271FCE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F91B92AE13AE8D7000271FCE /* PictureMap.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F91B92B113AE8D7000271FCE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3201088596B4756681693700 /* Three20UICommon.xcodeproj */,
+				320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */,
+				320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */,
+				320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */,
+				320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */,
+				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
+				320A5A189C235877202780D0 /* Three20Network.xcodeproj */,
+				320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */,
+				F91B93F613AE929800271FCE /* AssetsLibrary.framework */,
+				F91B92B613AE8D7000271FCE /* CoreGraphics.framework */,
+				F91B93F813AE92A500271FCE /* CoreLocation.framework */,
+				F91B92B413AE8D7000271FCE /* Foundation.framework */,
+				F91B93FA13AE92D400271FCE /* MapKit.framework */,
+				F91B93FC13AE92DC00271FCE /* MessageUI.framework */,
+				F91B93FE13AE92FD00271FCE /* QuartzCore.framework */,
+				F91B92B213AE8D7000271FCE /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F91B92B813AE8D7000271FCE /* PictureMap */ = {
+			isa = PBXGroup;
+			children = (
+				F91B934413AE8E2300271FCE /* Classes */,
+				F91B94AC13AE9F8500271FCE /* Ressources */,
+				F91B92B913AE8D7000271FCE /* Supporting Files */,
+			);
+			path = PictureMap;
+			sourceTree = "<group>";
+		};
+		F91B92B913AE8D7000271FCE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F9036D1513B130D200A32774 /* Localizable.strings */,
+				F91B92BA13AE8D7000271FCE /* PictureMap-Info.plist */,
+				F91B92BB13AE8D7000271FCE /* InfoPlist.strings */,
+				F91B92BE13AE8D7000271FCE /* PictureMap-Prefix.pch */,
+				F91B92BF13AE8D7000271FCE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F91B934413AE8E2300271FCE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F91B93EE13AE8F4D00271FCE /* PhotoDisplay */,
+				F91B93F513AE8FC400271FCE /* additions */,
+				F91B93EF13AE8F6C00271FCE /* annotation */,
+				F91B93F413AE8FB600271FCE /* model */,
+				F91B93F313AE8FAD00271FCE /* clusterer */,
+				F91B93F213AE8FA400271FCE /* dataloader */,
+				F91B93F113AE8F9A00271FCE /* delegate */,
+				F91B93F013AE8F9000271FCE /* controller */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		F91B93EE13AE8F4D00271FCE /* PhotoDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				F91B93D413AE8F4400271FCE /* Photo.h */,
+				F91B93D513AE8F4400271FCE /* Photo.m */,
+				F91B93D813AE8F4400271FCE /* PhotoSet.h */,
+				F91B93D913AE8F4400271FCE /* PhotoSet.m */,
+				F91B93DA13AE8F4400271FCE /* PhotoViewController.h */,
+				F91B93DB13AE8F4400271FCE /* PhotoViewController.m */,
+			);
+			name = PhotoDisplay;
+			sourceTree = "<group>";
+		};
+		F91B93EF13AE8F6C00271FCE /* annotation */ = {
+			isa = PBXGroup;
+			children = (
+				F91B93C113AE8F4400271FCE /* CountView.h */,
+				F91B93C213AE8F4400271FCE /* CountView.m */,
+				F91B93D613AE8F4400271FCE /* PhotoAnnotationView.h */,
+				F91B93D713AE8F4400271FCE /* PhotoAnnotationView.m */,
+			);
+			name = annotation;
+			sourceTree = "<group>";
+		};
+		F91B93F013AE8F9000271FCE /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F91B94B113AEA37A00271FCE /* SettingsViewController.h */,
+				F91B94B213AEA37A00271FCE /* SettingsViewController.m */,
+				F91B93D113AE8F4400271FCE /* PictureMapViewController.h */,
+				F91B93D213AE8F4400271FCE /* PictureMapViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		F91B93F113AE8F9A00271FCE /* delegate */ = {
+			isa = PBXGroup;
+			children = (
+				F91B92C113AE8D7000271FCE /* PictureMapAppDelegate.h */,
+				F91B92C213AE8D7000271FCE /* PictureMapAppDelegate.m */,
+			);
+			name = delegate;
+			sourceTree = "<group>";
+		};
+		F91B93F213AE8FA400271FCE /* dataloader */ = {
+			isa = PBXGroup;
+			children = (
+				F91B93BF13AE8F4400271FCE /* AssetController.h */,
+				F91B93C013AE8F4400271FCE /* AssetController.m */,
+			);
+			name = dataloader;
+			sourceTree = "<group>";
+		};
+		F91B93F313AE8FAD00271FCE /* clusterer */ = {
+			isa = PBXGroup;
+			children = (
+				F91B93BD13AE8F4400271FCE /* AssetClusterAnnotation.h */,
+				F91B93BE13AE8F4400271FCE /* AssetClusterAnnotation.m */,
+				F91B93B913AE8F4400271FCE /* AnnotationClusterer.h */,
+				F91B93BA13AE8F4400271FCE /* AnnotationClusterer.m */,
+			);
+			name = clusterer;
+			sourceTree = "<group>";
+		};
+		F91B93F413AE8FB600271FCE /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F91B93BB13AE8F4400271FCE /* AssetAnnotation.h */,
+				F91B93BC13AE8F4400271FCE /* AssetAnnotation.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		F91B93F513AE8FC400271FCE /* additions */ = {
+			isa = PBXGroup;
+			children = (
+				F91B93B713AE8F4400271FCE /* ALAssetAdditions.h */,
+				F91B93B813AE8F4400271FCE /* ALAssetAdditions.m */,
+				F91B93DC13AE8F4400271FCE /* UIImageAdditions.h */,
+				F91B93DD13AE8F4400271FCE /* UIImageAdditions.m */,
+				F91B93DE13AE8F4400271FCE /* URLParser.h */,
+				F91B93DF13AE8F4400271FCE /* URLParser.m */,
+			);
+			name = additions;
+			sourceTree = "<group>";
+		};
+		F91B94AC13AE9F8500271FCE /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				F91B94AD13AE9FA700271FCE /* settings.png */,
+				F91B94AE13AE9FA700271FCE /* settings@2x.png */,
+			);
+			name = Ressources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F91B92AD13AE8D7000271FCE /* PictureMap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F91B92CF13AE8D7100271FCE /* Build configuration list for PBXNativeTarget "PictureMap" */;
+			buildPhases = (
+				F91B92AA13AE8D7000271FCE /* Sources */,
+				F91B92AB13AE8D7000271FCE /* Frameworks */,
+				F91B92AC13AE8D7000271FCE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3201088596B4756681693701 /* PBXTargetDependency */,
+				320D7DCCE32703ACAB9A45E1 /* PBXTargetDependency */,
+				320A737074758E53BA54BE91 /* PBXTargetDependency */,
+				320A2827FEC940B25BC42C61 /* PBXTargetDependency */,
+				320F2C48872C2E2C4DF86201 /* PBXTargetDependency */,
+				320A5A189C235877202780D1 /* PBXTargetDependency */,
+				320CC833B8AF0ACFD35E6221 /* PBXTargetDependency */,
+			);
+			name = PictureMap;
+			productName = PictureMap;
+			productReference = F91B92AE13AE8D7000271FCE /* PictureMap.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F91B92A513AE8D7000271FCE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "EADS DS";
+			};
+			buildConfigurationList = F91B92A813AE8D7000271FCE /* Build configuration list for PBXProject "PictureMap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				fr,
+			);
+			mainGroup = F91B92A313AE8D7000271FCE;
+			productRefGroup = F91B92AF13AE8D7000271FCE /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 320D7DCCE32703ACAB9A45E3 /* Products */;
+					ProjectRef = 320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */;
+				},
+				{
+					ProductGroup = 320A2827FEC940B25BC42C63 /* Products */;
+					ProjectRef = 320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */;
+				},
+				{
+					ProductGroup = 320A5A189C235877202780D3 /* Products */;
+					ProjectRef = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
+				},
+				{
+					ProductGroup = 320CC833B8AF0ACFD35E6223 /* Products */;
+					ProjectRef = 320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */;
+				},
+				{
+					ProductGroup = 320F2C48872C2E2C4DF86203 /* Products */;
+					ProjectRef = 320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */;
+				},
+				{
+					ProductGroup = 3201088596B4756681693703 /* Products */;
+					ProjectRef = 3201088596B4756681693700 /* Three20UICommon.xcodeproj */;
+				},
+				{
+					ProductGroup = 320A737074758E53BA54BE93 /* Products */;
+					ProjectRef = 320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				F91B92AD13AE8D7000271FCE /* PictureMap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3201088596B4756681693704 /* libThree20UICommon.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20UICommon.a;
+			remoteRef = 3201088596B4756681693706 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		320A2827FEC940B25BC42C64 /* libThree20Core.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20Core.a;
+			remoteRef = 320A2827FEC940B25BC42C66 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		320A5A189C235877202780D4 /* libThree20Network.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20Network.a;
+			remoteRef = 320A5A189C235877202780D6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		320A737074758E53BA54BE94 /* libThree20UINavigator.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20UINavigator.a;
+			remoteRef = 320A737074758E53BA54BE96 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		320CC833B8AF0ACFD35E6224 /* libThree20Style.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20Style.a;
+			remoteRef = 320CC833B8AF0ACFD35E6226 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		320D7DCCE32703ACAB9A45E4 /* libThree20.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20.a;
+			remoteRef = 320D7DCCE32703ACAB9A45E6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		320F2C48872C2E2C4DF86204 /* libThree20UI.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20UI.a;
+			remoteRef = 320F2C48872C2E2C4DF86206 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F91B944913AE93EA00271FCE /* Three20UnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Three20UnitTests.octest;
+			remoteRef = F91B944813AE93EA00271FCE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F91B944C13AE93EA00271FCE /* CoreUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CoreUnitTests.octest;
+			remoteRef = F91B944B13AE93EA00271FCE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F91B944F13AE93EA00271FCE /* NetworkUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NetworkUnitTests.octest;
+			remoteRef = F91B944E13AE93EA00271FCE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F91B945213AE93EA00271FCE /* StyleUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = StyleUnitTests.octest;
+			remoteRef = F91B945113AE93EA00271FCE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F91B945513AE93EA00271FCE /* UIUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UIUnitTests.octest;
+			remoteRef = F91B945413AE93EA00271FCE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F91B945813AE93EA00271FCE /* UICommonUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UICommonUnitTests.octest;
+			remoteRef = F91B945713AE93EA00271FCE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F91B945B13AE93EA00271FCE /* UINavigatorUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UINavigatorUnitTests.octest;
+			remoteRef = F91B945A13AE93EA00271FCE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F91B92AC13AE8D7000271FCE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F91B92BD13AE8D7000271FCE /* InfoPlist.strings in Resources */,
+				F91B94AF13AE9FA700271FCE /* settings.png in Resources */,
+				F91B94B013AE9FA700271FCE /* settings@2x.png in Resources */,
+				F9036D1713B130D200A32774 /* Localizable.strings in Resources */,
+				F9036D1913B130EC00A32774 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F91B92AA13AE8D7000271FCE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F91B92C013AE8D7000271FCE /* main.m in Sources */,
+				F91B92C313AE8D7000271FCE /* PictureMapAppDelegate.m in Sources */,
+				F91B93E013AE8F4400271FCE /* ALAssetAdditions.m in Sources */,
+				F91B93E113AE8F4400271FCE /* AnnotationClusterer.m in Sources */,
+				F91B93E213AE8F4400271FCE /* AssetAnnotation.m in Sources */,
+				F91B93E313AE8F4400271FCE /* AssetClusterAnnotation.m in Sources */,
+				F91B93E413AE8F4400271FCE /* AssetController.m in Sources */,
+				F91B93E513AE8F4400271FCE /* CountView.m in Sources */,
+				F91B93E713AE8F4400271FCE /* PictureMapViewController.m in Sources */,
+				F91B93E813AE8F4400271FCE /* Photo.m in Sources */,
+				F91B93E913AE8F4400271FCE /* PhotoAnnotationView.m in Sources */,
+				F91B93EA13AE8F4400271FCE /* PhotoSet.m in Sources */,
+				F91B93EB13AE8F4400271FCE /* PhotoViewController.m in Sources */,
+				F91B93EC13AE8F4400271FCE /* UIImageAdditions.m in Sources */,
+				F91B93ED13AE8F4400271FCE /* URLParser.m in Sources */,
+				F91B94B313AEA37B00271FCE /* SettingsViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3201088596B4756681693701 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20UICommon;
+			targetProxy = 3201088596B4756681693702 /* PBXContainerItemProxy */;
+		};
+		320A2827FEC940B25BC42C61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20Core;
+			targetProxy = 320A2827FEC940B25BC42C62 /* PBXContainerItemProxy */;
+		};
+		320A5A189C235877202780D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20Network;
+			targetProxy = 320A5A189C235877202780D2 /* PBXContainerItemProxy */;
+		};
+		320A737074758E53BA54BE91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20UINavigator;
+			targetProxy = 320A737074758E53BA54BE92 /* PBXContainerItemProxy */;
+		};
+		320CC833B8AF0ACFD35E6221 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20Style;
+			targetProxy = 320CC833B8AF0ACFD35E6222 /* PBXContainerItemProxy */;
+		};
+		320D7DCCE32703ACAB9A45E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20;
+			targetProxy = 320D7DCCE32703ACAB9A45E2 /* PBXContainerItemProxy */;
+		};
+		320F2C48872C2E2C4DF86201 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20UI;
+			targetProxy = 320F2C48872C2E2C4DF86202 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F9036D1513B130D200A32774 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9036D1613B130D200A32774 /* en */,
+				F9036D1813B130EC00A32774 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F91B92BB13AE8D7000271FCE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F91B92BC13AE8D7000271FCE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F91B92CD13AE8D7100271FCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/../three20",
+					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					../three20/Build/Products/three20,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F91B92CE13AE8D7100271FCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/../three20",
+					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					../three20/Build/Products/three20,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		F91B92D013AE8D7100271FCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PictureMap/PictureMap-Prefix.pch";
+				INFOPLIST_FILE = "PictureMap/PictureMap-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F91B92D113AE8D7100271FCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PictureMap/PictureMap-Prefix.pch";
+				INFOPLIST_FILE = "PictureMap/PictureMap-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F91B92A813AE8D7000271FCE /* Build configuration list for PBXProject "PictureMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F91B92CD13AE8D7100271FCE /* Debug */,
+				F91B92CE13AE8D7100271FCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F91B92CF13AE8D7100271FCE /* Build configuration list for PBXNativeTarget "PictureMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F91B92D013AE8D7100271FCE /* Debug */,
+				F91B92D113AE8D7100271FCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F91B92A513AE8D7000271FCE /* Project object */;
+}
