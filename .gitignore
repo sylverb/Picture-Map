@@ -1,0 +1,7 @@
+build
+.DS_Store
+PictureMap.xcodeproj/*.pbxuser
+PictureMap.xcodeproj/*.perspectivev3
+PictureMap.xcodeproj/*.mode1v3
+PictureMap.xcodeproj/project.xcworkspace
+PictureMap.xcodeproj/xcuserdata
