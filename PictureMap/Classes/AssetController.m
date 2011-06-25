@@ -79,8 +79,7 @@
                        void (^assetEnumerator)(ALAsset *, NSUInteger, BOOL *) = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
                            if(result != nil) {
                                CLLocation *location = [result valueForProperty:@"ALAssetPropertyLocation"];
-                               if (CLLocationCoordinate2DIsValid(location.coordinate)) {
-//                                 NSLog(@"%f,%f",location.coordinate.latitude ,location.coordinate.longitude);
+                               if ((location != nil) && (CLLocationCoordinate2DIsValid(location.coordinate))) {
                                    NSString *type = [result valueForProperty:@"ALAssetPropertyType"];
                                    if (((type == ALAssetTypePhoto) && (parsePhotos)) ||
                                        ((type == ALAssetTypeVideo) && (parseVideos))) {
