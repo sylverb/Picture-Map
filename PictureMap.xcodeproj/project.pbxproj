@@ -44,6 +44,13 @@
 		F91B94AF13AE9FA700271FCE /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F91B94AD13AE9FA700271FCE /* settings.png */; };
 		F91B94B013AE9FA700271FCE /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91B94AE13AE9FA700271FCE /* settings@2x.png */; };
 		F91B94B313AEA37B00271FCE /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B94B213AEA37A00271FCE /* SettingsViewController.m */; };
+		F93F33F113B7204B004BDBF6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33EA13B7204B004BDBF6 /* Icon.png */; };
+		F93F33F213B7204B004BDBF6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33EB13B7204B004BDBF6 /* Icon-72.png */; };
+		F93F33F313B7204B004BDBF6 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33EC13B7204B004BDBF6 /* Icon-Small.png */; };
+		F93F33F413B7204B004BDBF6 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33ED13B7204B004BDBF6 /* Icon-Small-50.png */; };
+		F93F33F513B7204B004BDBF6 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33EE13B7204B004BDBF6 /* Icon-Small@2x.png */; };
+		F93F33F613B7204B004BDBF6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33EF13B7204B004BDBF6 /* Icon@2x.png */; };
+		F93F33F713B7204B004BDBF6 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = F93F33F013B7204B004BDBF6 /* iTunesArtwork */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -252,6 +259,13 @@
 		F91B94AE13AE9FA700271FCE /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Ressources/settings@2x.png"; sourceTree = "<group>"; };
 		F91B94B113AEA37A00271FCE /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Classes/SettingsViewController.h; sourceTree = "<group>"; };
 		F91B94B213AEA37A00271FCE /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Classes/SettingsViewController.m; sourceTree = "<group>"; };
+		F93F33EA13B7204B004BDBF6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Ressources/Icon.png; sourceTree = "<group>"; };
+		F93F33EB13B7204B004BDBF6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Ressources/Icon-72.png"; sourceTree = "<group>"; };
+		F93F33EC13B7204B004BDBF6 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Ressources/Icon-Small.png"; sourceTree = "<group>"; };
+		F93F33ED13B7204B004BDBF6 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Ressources/Icon-Small-50.png"; sourceTree = "<group>"; };
+		F93F33EE13B7204B004BDBF6 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Ressources/Icon-Small@2x.png"; sourceTree = "<group>"; };
+		F93F33EF13B7204B004BDBF6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Ressources/Icon@2x.png"; sourceTree = "<group>"; };
+		F93F33F013B7204B004BDBF6 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Ressources/iTunesArtwork; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -510,6 +524,13 @@
 		F91B94AC13AE9F8500271FCE /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				F93F33F013B7204B004BDBF6 /* iTunesArtwork */,
+				F93F33EA13B7204B004BDBF6 /* Icon.png */,
+				F93F33EF13B7204B004BDBF6 /* Icon@2x.png */,
+				F93F33EB13B7204B004BDBF6 /* Icon-72.png */,
+				F93F33EC13B7204B004BDBF6 /* Icon-Small.png */,
+				F93F33ED13B7204B004BDBF6 /* Icon-Small-50.png */,
+				F93F33EE13B7204B004BDBF6 /* Icon-Small@2x.png */,
 				F91B94AD13AE9FA700271FCE /* settings.png */,
 				F91B94AE13AE9FA700271FCE /* settings@2x.png */,
 			);
@@ -710,6 +731,13 @@
 				F91B94B013AE9FA700271FCE /* settings@2x.png in Resources */,
 				F9036D1713B130D200A32774 /* Localizable.strings in Resources */,
 				F9036D1913B130EC00A32774 /* Localizable.strings in Resources */,
+				F93F33F113B7204B004BDBF6 /* Icon.png in Resources */,
+				F93F33F213B7204B004BDBF6 /* Icon-72.png in Resources */,
+				F93F33F313B7204B004BDBF6 /* Icon-Small.png in Resources */,
+				F93F33F413B7204B004BDBF6 /* Icon-Small-50.png in Resources */,
+				F93F33F513B7204B004BDBF6 /* Icon-Small@2x.png in Resources */,
+				F93F33F613B7204B004BDBF6 /* Icon@2x.png in Resources */,
+				F93F33F713B7204B004BDBF6 /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
