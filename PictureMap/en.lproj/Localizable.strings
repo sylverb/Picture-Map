@@ -3,6 +3,9 @@
 "Files to show on map" = "Files to show on map";
 "Albums to show on map" = "Albums to show on map";
 
+"Warning" = "Warning";
+"There are not geotagged photos available in the selection, please change your selection or add geotagged photos on your device" = "There are not geotagged photos available in the selection, please change your selection or add geotagged photos on your device";
+
 "Standard" = "Standard";
 "Satellite" = "Satellite";
 "Hybrid" = "Hybrid";

@@ -185,6 +185,15 @@
         NSArray *annotationsArray = [_mapView annotations];
         [_mapView removeAnnotations:annotationsArray];
         
+        if ([_assetController.assetItems count] == 0) {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning",nil)
+                                                             message:NSLocalizedString(@"There are not geotagged photos available in the selection, please change your selection or add geotagged photos on your device",nil)
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"Ok"
+                                                   otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
         MKCoordinateRegion currentRegion = [_mapView region];
         NSValue *regionAsValue = [NSValue valueWithBytes:&currentRegion objCType:@encode(MKCoordinateRegion)];
         
