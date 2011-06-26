@@ -212,7 +212,14 @@
 	MKCoordinateRegion currentRegion = [aMapView region];
 	NSValue *regionAsValue = [NSValue valueWithBytes:&currentRegion objCType:@encode(MKCoordinateRegion)];
 
-    [self performSelectorOnMainThread:@selector(updateAssetsOnRegion:) withObject:regionAsValue waitUntilDone:YES];    
+    [self performSelectorOnMainThread:@selector(updateAssetsOnRegion:) withObject:regionAsValue waitUntilDone:YES];
+    
+    // Save location
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setFloat: currentRegion.center.latitude forKey: @"CenterPointLatitude"];
+    [prefs setFloat: currentRegion.center.longitude forKey: @"CenterPointLongitude"];
+    [prefs setDouble: currentRegion.span.latitudeDelta forKey: @"SpanDeltaLatitude"];
+    [prefs setDouble: currentRegion.span.longitudeDelta forKey: @"SpanDeltaLongitude"];
 }
 
 
