@@ -53,6 +53,8 @@
 @synthesize annotationClusterer;
 @synthesize mapView = _mapView;
 @synthesize assetController = _assetController;
+@synthesize locationManager = _locationManage;
+@synthesize location = _location;
 
 #pragma mark -
 #pragma mark NSObject Methods
@@ -66,11 +68,12 @@
 	[self setAnnotationClusterer:nil];
 	[self setMapView:nil];
     [self setAssetController:nil];
+    [self setLocationManager:nil];
 	[super dealloc];
 }
 
 
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return YES;
 }
 
@@ -125,6 +128,13 @@
                              [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
                                                                            target:nil
                                                                            action:nil],
+                             [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"locate"]
+                                                              style:UIBarButtonItemStylePlain
+                                                             target:self
+                                                             action:@selector(showUserLocation:)],
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
+                                                                           target:nil
+                                                                           action:nil],
                              [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
                                                                            target:self
                                                                            action:@selector(refreshAnnotations:)],
@@ -141,9 +151,17 @@
                              nil];
     self.toolbarItems = toolbarItems;
     [toolbarItems makeObjectsPerformSelector:@selector(release)];
+    
+    // Set invalid user location
+    self.location = CLLocationCoordinate2DMake(1000,1000);
+    
+    _locationManager=[[CLLocationManager alloc] init];
+	_locationManager.delegate=self;
+	_locationManager.desiredAccuracy=kCLLocationAccuracyNearestTenMeters;
+	[_locationManager startUpdatingLocation];
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
@@ -153,7 +171,7 @@
     [super viewWillAppear:animated];
 }
 
-- (void) viewWillDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self.navigationController setToolbarHidden:YES animated:animated];
@@ -162,7 +180,7 @@
 
 #pragma mark -
 #pragma mark NSNotification Handling
--(void)handleNotification:(NSNotification *)pNotification {
+- (void)handleNotification:(NSNotification *)pNotification {
 	if ([pNotification.name isEqualToString:@"assetsParsingEnded"]) {
         NSArray *annotationsArray = [_mapView annotations];
         [_mapView removeAnnotations:annotationsArray];
@@ -257,6 +275,15 @@
         [photoViewController release];
 	}
 }
+#pragma mark -
+#pragma mark CLLocationManagerDelegate methods
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+	self.location = newLocation.coordinate;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+}
 
 #pragma mark -
 #pragma mark UIBarButtonItems actions
@@ -289,6 +316,15 @@
     [SettingsViewController release];
 
 }
+
+- (void)showUserLocation:(UIBarButtonItem *)button {
+	//zoom to user's location
+    if (CLLocationCoordinate2DIsValid(self.location)) {
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.location, 500, 500);
+        [_mapView setRegion:region animated:TRUE];
+    }
+}
+
 
 #pragma mark -
 #pragma mark UIPopoverControllerDelegate
