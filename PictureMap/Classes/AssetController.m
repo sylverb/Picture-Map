@@ -50,7 +50,7 @@
         parsePhotos = [prefs boolForKey:@"SyncPhotos"];
     }
     
-    BOOL parseVideos =  YES;
+    BOOL parseVideos =  NO;
     if ([prefs objectForKey:@"SyncVideos"]) {
         parseVideos = [prefs boolForKey:@"SyncVideos"];
     }
