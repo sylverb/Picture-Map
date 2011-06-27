@@ -185,7 +185,7 @@
 	if ([pNotification.name isEqualToString:@"assetsParsingEnded"]) {
         NSArray *annotationsArray = [_mapView annotations];
         [_mapView removeAnnotations:annotationsArray];
-        NSLog(@"notification received %d",[_assetController.assetItems count]);
+        
         if ([_assetController.assetItems count] == 0) {
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning",nil)
                                                              message:NSLocalizedString(@"There are not geotagged photos available in the selection, please change your selection or add geotagged photos on your device",nil)
