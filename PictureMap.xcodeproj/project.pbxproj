@@ -53,6 +53,7 @@
 		F99A4F0713B7D7920025EB7E /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = F99A4F0513B7D7920025EB7E /* locate.png */; };
 		F99A4F0813B7D7920025EB7E /* locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99A4F0613B7D7920025EB7E /* locate@2x.png */; };
 		F99A4F2013B7E4EA0025EB7E /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F99A4F1F13B7E4EA0025EB7E /* Three20.bundle */; };
+		F99A4F2313B911B10025EB7E /* ThumbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F99A4F2213B911B10025EB7E /* ThumbsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +271,8 @@
 		F99A4F0513B7D7920025EB7E /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locate.png; path = Ressources/locate.png; sourceTree = "<group>"; };
 		F99A4F0613B7D7920025EB7E /* locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "locate@2x.png"; path = "Ressources/locate@2x.png"; sourceTree = "<group>"; };
 		F99A4F1F13B7E4EA0025EB7E /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = "<group>"; };
+		F99A4F2113B911B00025EB7E /* ThumbsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThumbsViewController.h; path = Classes/ThumbsViewController.h; sourceTree = "<group>"; };
+		F99A4F2213B911B10025EB7E /* ThumbsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThumbsViewController.m; path = Classes/ThumbsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +450,8 @@
 				F91B93D913AE8F4400271FCE /* PhotoSet.m */,
 				F91B93DA13AE8F4400271FCE /* PhotoViewController.h */,
 				F91B93DB13AE8F4400271FCE /* PhotoViewController.m */,
+				F99A4F2113B911B00025EB7E /* ThumbsViewController.h */,
+				F99A4F2213B911B10025EB7E /* ThumbsViewController.m */,
 			);
 			name = PhotoDisplay;
 			sourceTree = "<group>";
@@ -772,6 +777,7 @@
 				F91B93EC13AE8F4400271FCE /* UIImageAdditions.m in Sources */,
 				F91B93ED13AE8F4400271FCE /* URLParser.m in Sources */,
 				F91B94B313AEA37B00271FCE /* SettingsViewController.m in Sources */,
+				F99A4F2313B911B10025EB7E /* ThumbsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
