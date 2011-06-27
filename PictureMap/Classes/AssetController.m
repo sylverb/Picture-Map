@@ -72,6 +72,9 @@
                    {
                        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
                        
+                       NSMutableArray *groupsArray = [NSMutableArray array];
+                       __block NSInteger parsedArrayCount = 0;
+                       
                        // Remove previous objects
                        [assetItems removeAllObjects];
                        
@@ -93,6 +96,14 @@
                                    }
                                }
                                return;
+                           } else {
+                               parsedArrayCount ++;
+                               // If last group parsed, send a notification to main controller
+                               if (parsedArrayCount == [groupsArray count]) {
+                                   [[NSNotificationCenter defaultCenter] postNotificationName:@"assetsParsingEnded"
+                                                                                       object:self
+                                                                                     userInfo:nil];
+                               }
                            }
                        };
                        
@@ -102,16 +113,16 @@
                                // Check if we want to parse this album
                                if ([dict objectForKey:[group valueForProperty:ALAssetsGroupPropertyPersistentID]]) {
                                    if ([[dict objectForKey:[group valueForProperty:ALAssetsGroupPropertyPersistentID]] boolValue]) {
-                                       [group enumerateAssetsUsingBlock:assetEnumerator];
+                                       [groupsArray addObject:group];
                                    }
                                } else {
-                                   [group enumerateAssetsUsingBlock:assetEnumerator];
+                                   [groupsArray addObject:group];
                                }
                            } else {
-                               // Last group enumerated, send notification
-                               [[NSNotificationCenter defaultCenter] postNotificationName:@"assetsParsingEnded"
-                                                                                   object:self
-                                                                                 userInfo:nil];
+                               // Last group parsed, now parse ALAssets of each group
+                               for (ALAssetsGroup *assetGroups in groupsArray) {
+                                   [assetGroups enumerateAssetsUsingBlock:assetEnumerator];
+                               }
                            }
                        };
                        
