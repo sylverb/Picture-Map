@@ -54,8 +54,7 @@
 @synthesize annotationClusterer;
 @synthesize mapView = _mapView;
 @synthesize assetController = _assetController;
-@synthesize locationManager = _locationManage;
-@synthesize location = _location;
+@synthesize locationManager = _locationManager;
 
 #pragma mark -
 #pragma mark NSObject Methods
@@ -152,14 +151,6 @@
                              nil];
     self.toolbarItems = toolbarItems;
     [toolbarItems makeObjectsPerformSelector:@selector(release)];
-    
-    // Set invalid user location
-    self.location = CLLocationCoordinate2DMake(1000,1000);
-    
-    _locationManager=[[CLLocationManager alloc] init];
-	_locationManager.delegate=self;
-	_locationManager.desiredAccuracy=kCLLocationAccuracyNearestTenMeters;
-	[_locationManager startUpdatingLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -302,7 +293,14 @@
 #pragma mark CLLocationManagerDelegate methods
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-	self.location = newLocation.coordinate;
+    //zoom to user's location
+    if (CLLocationCoordinate2DIsValid(newLocation.coordinate)) {
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 500, 500);
+        [_mapView setRegion:region animated:YES];
+
+        // Location found, stop updating it
+        [_locationManager stopUpdatingLocation];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -341,11 +339,12 @@
 }
 
 - (void)showUserLocation:(UIBarButtonItem *)button {
-	//zoom to user's location
-    if (CLLocationCoordinate2DIsValid(self.location)) {
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.location, 500, 500);
-        [_mapView setRegion:region animated:TRUE];
+    if (_locationManager == nil) {
+        _locationManager=[[CLLocationManager alloc] init];
+        _locationManager.delegate=self;
+        _locationManager.desiredAccuracy=kCLLocationAccuracyHundredMeters;
     }
+    [_locationManager startUpdatingLocation];
 }
 
 

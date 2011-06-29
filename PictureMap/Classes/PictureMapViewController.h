@@ -31,14 +31,12 @@
     MKMapView *_mapView;
     
     CLLocationManager *_locationManager;
-	CLLocationCoordinate2D _location;
     
     UIPopoverController *popoverController;
 }
 @property (nonatomic, retain) MKMapView *mapView;
 @property (nonatomic, retain) AssetController *assetController;
 @property (nonatomic, retain) CLLocationManager *locationManager;
-@property (nonatomic) CLLocationCoordinate2D location;
 
 // This method is called as part of an operation queue. The |value| object is actually
 // a MKCoordinateRegion type.
