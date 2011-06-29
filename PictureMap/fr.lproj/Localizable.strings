@@ -12,6 +12,9 @@
 
 "Photos" = "Photos";
 "Videos" = "Vidéos";
+"Photo" = "Photo";
+"Video" = "Vidéo";
 "All albums" = "Tous les albums";
 
 "Failed sending email, please try again..." = "Echec d'envoi de l'email, merci de réessayer...";
+"Date: %@" = "Date: %@";
