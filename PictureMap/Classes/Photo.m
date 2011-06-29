@@ -88,8 +88,15 @@
 
 - (NSString *)caption {
     if (!_caption) {
-        NSString *caption = [self.alAsset fileName];
+        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+		[outputFormatter setDateStyle:NSDateFormatterFullStyle];
+		[outputFormatter setTimeStyle:NSDateFormatterMediumStyle];
+        
+        NSString *caption = [NSString stringWithFormat:NSLocalizedString(@"Date: %@", nil),
+                             [outputFormatter stringFromDate:[self.alAsset valueForProperty:@"ALAssetPropertyDate"]]];
         self.caption = caption;
+        
+		[outputFormatter release];
     }
     return _caption;
 }

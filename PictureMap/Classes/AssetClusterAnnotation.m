@@ -55,20 +55,16 @@
 
 - (NSString*) title {
     NSMutableString *annotationTitle = [NSMutableString string];
-    if ([self totalMarkers] == 1) {
-		[annotationTitle setString:[[annotations objectAtIndex:0] title]];
-	} else {
-        NSInteger totalPhotos = [self totalPhotoMarkers];
-        NSInteger totalvideos = [self totalVideoMarkers];
-        if ([self totalPhotoMarkers] !=0) {
-            [annotationTitle appendFormat:@"%d photo%@ ", totalPhotos, (totalPhotos == 1)?@"":@"s"];
-        }
-        if (([self totalPhotoMarkers] !=0) && ([self totalVideoMarkers] !=0)) {
-            [annotationTitle appendString:@", "];
-        }
-        if ([self totalVideoMarkers] !=0) {
-            [annotationTitle appendFormat:@"%d video%@", totalvideos, (totalvideos == 1)?@"":@"s"];
-        }
+    NSInteger totalPhotos = [self totalPhotoMarkers];
+    NSInteger totalvideos = [self totalVideoMarkers];
+    if ([self totalPhotoMarkers] !=0) {
+        [annotationTitle appendFormat:@"%d %@", totalPhotos, (totalPhotos == 1)?NSLocalizedString(@"photo",nil):NSLocalizedString(@"photos",nil)];
+    }
+    if (([self totalPhotoMarkers] !=0) && ([self totalVideoMarkers] !=0)) {
+        [annotationTitle appendString:@", "];
+    }
+    if ([self totalVideoMarkers] !=0) {
+        [annotationTitle appendFormat:@"%d %@", totalvideos, (totalvideos == 1)?NSLocalizedString(@"video",nil):NSLocalizedString(@"videos",nil)];
     }
 	return annotationTitle;
 }
