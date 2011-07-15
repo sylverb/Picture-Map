@@ -334,7 +334,7 @@
     } else {
         [self.navigationController pushViewController:settingsViewController animated:YES];
     }
-    [SettingsViewController release];
+    [settingsViewController release];
 
 }
 
