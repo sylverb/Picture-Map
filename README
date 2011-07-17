@@ -2,3 +2,14 @@ Get source code instruction :
 git clone git://github.com/sylverb/three20.git (modified version of three20 to display ALAsset content)
 git clone git://github.com/sylverb/Picture-Map.git
 
+About Picture-Map :
+Picture Map was my first application, I recently decided to rewrite it and to publish it on the AppStore.
+Basically I rewrote everything from scratch by using different code found here and there ... It took me only few hours of work and it is a sample of what could be done without a lot of work ...
+
+Code used in Picture-Map :
+- The application is based on MapPointClustering done by vladzz : https://github.com/vladzz/MapPointClusteringPrototypeIphone
+- It is using three20 modified by me to show pictures from the photo libraries (ALAsset) : https://github.com/sylverb/three20
+- It is based on various source code samples found on stackoverflow.com (mainly to deal with ALAsset)
+
+Have fun,
+Sylver
