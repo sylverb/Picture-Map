@@ -34,6 +34,8 @@
 
 #define TAG_SWITCH_PHOTOS 1
 #define TAG_SWITCH_VIDEOS 2
+#define TAG_SLIDER_SIZE         1
+#define TAG_SLIDER_TRANSPARENCY 2
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -140,7 +142,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -151,9 +153,12 @@
             rows = 1;
             break;
         case 1 :
-            rows = 2;
+            rows = 1;
             break;
         case 2 :
+            rows = 2;
+            break;
+        case 3 :
             if (allAlbumsSelected) {
                 rows = 1;
             } else {
@@ -170,12 +175,15 @@
 	NSString * title = @"";
 	switch (section) {
 		case 0:
-			title = NSLocalizedString(@"Map settings",nil);
+			title = NSLocalizedString(@"Thumbnails on map",nil);
 			break;
 		case 1:
-			title = NSLocalizedString(@"Files to show on map",nil);
+			title = NSLocalizedString(@"Map settings",nil);
 			break;
 		case 2:
+			title = NSLocalizedString(@"Files to show on map",nil);
+			break;
+		case 3:
 			title = NSLocalizedString(@"Albums to show on map",nil);
 			break;
 	}
@@ -187,6 +195,7 @@
     static NSString * CellIdentifier = @"Cell";
     static NSString * PhotoCellIdentifier = @"PhotoCell";
     static NSString * SegCtrlCellIdentifier = @"SegCtrlCell";
+    static NSString * SliderCellIdentifier = @"SliderCell";
     
     UITableViewCell *cell = nil;
     
@@ -198,10 +207,52 @@
             switch (indexPath.row) {
                 case 0:
                 {
+                    cell = [tableView dequeueReusableCellWithIdentifier:SliderCellIdentifier];
+                    if (cell == nil) {
+                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SliderCellIdentifier] autorelease];
+                    }
+                    
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
+                    cell.textLabel.text = NSLocalizedString(@"Transparency",nil);
+                    
+                    // UISlider setup
+                    NSArray *cellSubViews = [[cell.textLabel superview] subviews];
+                    for (id item in cellSubViews) {
+                        if ([item isKindOfClass:[UISlider class]]) {
+                            UISlider *oldSlider = (UISlider *)item;
+                            [oldSlider removeFromSuperview];
+                            break;
+                        }
+                    }
+                    
+                    CGRect frame = CGRectMake(130, 0, 160, 44);
+                    UISlider *slider = [[[UISlider alloc] init] autorelease];
+                    slider.frame = frame;
+                    float annotationAlpha = 1.0;
+                    if ([prefs objectForKey:@"AnnotationAlpha"]) {
+                        annotationAlpha = [prefs floatForKey:@"AnnotationAlpha"];
+                    }
+                    slider.value = annotationAlpha;
+                    [slider addTarget:self
+                               action:@selector(sliderValueChanged:)
+                     forControlEvents:UIControlEventValueChanged];
+                    slider.tag = TAG_SLIDER_TRANSPARENCY;
+                    [[cell.textLabel superview] addSubview:slider];
+                    break;
+                }
+            }
+            break;
+        }
+        case 1:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
                     cell = [tableView dequeueReusableCellWithIdentifier:SegCtrlCellIdentifier];
                     if (cell == nil) {
                         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SegCtrlCellIdentifier] autorelease];
-
+                        
                         // Make transparent background
                         UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
                         backView.backgroundColor = [UIColor clearColor];
@@ -210,7 +261,7 @@
                     
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
-
+                    
                     // UISegmentedControl setup
                     NSArray *cellSubViews = [[cell.textLabel superview] subviews];
                     for (id item in cellSubViews) {
@@ -254,7 +305,7 @@
             }
             break;
         }
-        case 1:
+        case 2:
         { 
             switch (indexPath.row) {
                 case 0:
@@ -337,7 +388,7 @@
             }
             break;
         }
-        case 2:
+        case 3:
         {
             switch (indexPath.row) {
                 case 0:
@@ -498,6 +549,22 @@
     [dict setObject:[NSNumber numberWithBool:[sender isOn]] forKey:[g valueForProperty:ALAssetsGroupPropertyPersistentID]];
 
     [prefs setObject:dict forKey:@"SelectedAlbumsDict"];
+}
+
+- (void)sliderValueChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    switch (((UISwitch *)sender).tag) {
+        case TAG_SLIDER_SIZE:
+            [prefs setFloat:slider.value forKey:@"AnnotationRatio"];    
+            break;
+        case TAG_SLIDER_TRANSPARENCY:
+            [prefs setFloat:slider.value forKey:@"AnnotationAlpha"];    
+            break;
+            
+        default:
+            break;
+    }
 }
 
 

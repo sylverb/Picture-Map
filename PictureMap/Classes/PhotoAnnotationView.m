@@ -46,10 +46,17 @@
 	[super setAnnotation: annotation];
     
 	if([annotation isMemberOfClass:[AssetClusterAnnotation class]]) {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        float annotationAlpha =  1.0f;
+        if ([prefs objectForKey:@"AnnotationAlpha"]) {
+            annotationAlpha = [prefs floatForKey:@"AnnotationAlpha"];
+        }
+
 		AssetClusterAnnotation *assetClusterAnnotation = (AssetClusterAnnotation *)annotation;
 		self.frame = CGRectMake(0, 0, kWidth, kHeight);
 		self.backgroundColor = [UIColor clearColor];
-
+        self.alpha = annotationAlpha;
+        
         UIImage *imageFromFile = [[assetClusterAnnotation.thumbnail makeRoundCornerImage:15 :15] imageScaledToSize:CGSizeMake(kWidth, kHeight)];
         
         self.image = imageFromFile;
@@ -73,7 +80,9 @@
 			frame.origin.x += 2;
 			
 			countView.frame = frame;
-			
+            
+			countView.alpha = annotationAlpha;
+            
 			[self addSubview:countView];
 			[countView release];
 		}
