@@ -73,6 +73,7 @@
                        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
                        
                        NSMutableArray *groupsArray = [NSMutableArray array];
+                       NSMutableDictionary *assetUrlDict = [NSMutableDictionary dictionary];
                        __block NSInteger parsedArrayCount = 0;
                        
                        // Remove previous objects
@@ -86,13 +87,19 @@
                                    NSString *type = [result valueForProperty:@"ALAssetPropertyType"];
                                    if (((type == ALAssetTypePhoto) && (parsePhotos)) ||
                                        ((type == ALAssetTypeVideo) && (parseVideos))) {
-                                       AssetAnnotation *anno = [[AssetAnnotation alloc] init];		
-                                       [anno setTitle:[result fileName]];
-                                       [anno setLatitude:location.coordinate.latitude];
-                                       [anno setLongitude:location.coordinate.longitude];
-                                       [anno setAlAsset:result];
-                                       [assetItems addObject:anno];
-                                       [anno release];
+                                       NSString *url = [[[result defaultRepresentation] url] absoluteString];
+                                       // If no element with this URL already exists, add it
+                                       if (![assetUrlDict objectForKey:url]) {
+                                           AssetAnnotation *anno = [[AssetAnnotation alloc] init];		
+                                           [anno setTitle:[result fileName]];
+                                           [anno setLatitude:location.coordinate.latitude];
+                                           [anno setLongitude:location.coordinate.longitude];
+                                           [anno setAlAsset:result];
+                                           [assetItems addObject:anno];
+                                           [anno release];
+                                           // Add the URL in the list of added elements
+                                           [assetUrlDict setObject:@"foo" forKey:url];
+                                       }
                                    }
                                }
                                return;
