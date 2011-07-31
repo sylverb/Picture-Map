@@ -65,6 +65,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"refreshMap"
                                                   object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"zoomToLocation"
+                                                  object:nil];
 	[self setAnnotationClusterer:nil];
 	[self setMapView:nil];
     [self setAssetController:nil];
@@ -108,6 +111,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleNotification:)
                                                  name:@"refreshMap"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleNotification:)
+                                                 name:@"zoomToLocation"
                                                object:nil];
     
     _assetController = [[AssetController alloc] init];
@@ -190,7 +198,7 @@
         NSValue *regionAsValue = [NSValue valueWithBytes:&currentRegion objCType:@encode(MKCoordinateRegion)];
         
         [self performSelectorOnMainThread:@selector(updateAssetsOnRegion:) withObject:regionAsValue waitUntilDone:YES];
-    } else 	if ([pNotification.name isEqualToString:@"refreshMap"]) {
+    } else if ([pNotification.name isEqualToString:@"refreshMap"]) {
         // Set map type
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         if ([prefs objectForKey:@"MapType"]) {
@@ -201,6 +209,12 @@
         
         // Parse assets
         [_assetController parseAssets];
+    } else if ([pNotification.name isEqualToString:@"zoomToLocation"]) {
+        CLLocation *location = [pNotification.userInfo objectForKey:@"location"];
+        if (CLLocationCoordinate2DIsValid(location.coordinate)) {
+            MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500);
+            [_mapView setRegion:region animated:YES];
+        }
     }
 }
 

@@ -30,7 +30,6 @@
 		F91B93E313AE8F4400271FCE /* AssetClusterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93BE13AE8F4400271FCE /* AssetClusterAnnotation.m */; };
 		F91B93E413AE8F4400271FCE /* AssetController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93C013AE8F4400271FCE /* AssetController.m */; };
 		F91B93E513AE8F4400271FCE /* CountView.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93C213AE8F4400271FCE /* CountView.m */; };
-		F91B93E713AE8F4400271FCE /* PictureMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93D213AE8F4400271FCE /* PictureMapViewController.m */; };
 		F91B93E813AE8F4400271FCE /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93D513AE8F4400271FCE /* Photo.m */; };
 		F91B93E913AE8F4400271FCE /* PhotoAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93D713AE8F4400271FCE /* PhotoAnnotationView.m */; };
 		F91B93EA13AE8F4400271FCE /* PhotoSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B93D913AE8F4400271FCE /* PhotoSet.m */; };
@@ -45,6 +44,7 @@
 		F91B94AF13AE9FA700271FCE /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F91B94AD13AE9FA700271FCE /* settings.png */; };
 		F91B94B013AE9FA700271FCE /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91B94AE13AE9FA700271FCE /* settings@2x.png */; };
 		F91B94B313AEA37B00271FCE /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91B94B213AEA37A00271FCE /* SettingsViewController.m */; };
+		F93A931D13BBDC5E00832102 /* PictureMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93A931C13BBDC5E00832102 /* PictureMapViewController.m */; };
 		F93F33F113B7204B004BDBF6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33EA13B7204B004BDBF6 /* Icon.png */; };
 		F93F33F213B7204B004BDBF6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33EB13B7204B004BDBF6 /* Icon-72.png */; };
 		F93F33F313B7204B004BDBF6 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33EC13B7204B004BDBF6 /* Icon-Small.png */; };
@@ -243,7 +243,6 @@
 		F91B93C113AE8F4400271FCE /* CountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountView.h; path = Classes/CountView.h; sourceTree = "<group>"; };
 		F91B93C213AE8F4400271FCE /* CountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountView.m; path = Classes/CountView.m; sourceTree = "<group>"; };
 		F91B93D113AE8F4400271FCE /* PictureMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PictureMapViewController.h; path = Classes/PictureMapViewController.h; sourceTree = "<group>"; };
-		F91B93D213AE8F4400271FCE /* PictureMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PictureMapViewController.m; path = Classes/PictureMapViewController.m; sourceTree = "<group>"; };
 		F91B93D413AE8F4400271FCE /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Classes/Photo.h; sourceTree = "<group>"; };
 		F91B93D513AE8F4400271FCE /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Classes/Photo.m; sourceTree = "<group>"; };
 		F91B93D613AE8F4400271FCE /* PhotoAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoAnnotationView.h; path = Classes/PhotoAnnotationView.h; sourceTree = "<group>"; };
@@ -265,6 +264,7 @@
 		F91B94AE13AE9FA700271FCE /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Ressources/settings@2x.png"; sourceTree = "<group>"; };
 		F91B94B113AEA37A00271FCE /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Classes/SettingsViewController.h; sourceTree = "<group>"; };
 		F91B94B213AEA37A00271FCE /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Classes/SettingsViewController.m; sourceTree = "<group>"; };
+		F93A931C13BBDC5E00832102 /* PictureMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PictureMapViewController.m; path = Classes/PictureMapViewController.m; sourceTree = "<group>"; };
 		F93F33EA13B7204B004BDBF6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Ressources/Icon.png; sourceTree = "<group>"; };
 		F93F33EB13B7204B004BDBF6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Ressources/Icon-72.png"; sourceTree = "<group>"; };
 		F93F33EC13B7204B004BDBF6 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Ressources/Icon-Small.png"; sourceTree = "<group>"; };
@@ -481,7 +481,7 @@
 				F91B94B113AEA37A00271FCE /* SettingsViewController.h */,
 				F91B94B213AEA37A00271FCE /* SettingsViewController.m */,
 				F91B93D113AE8F4400271FCE /* PictureMapViewController.h */,
-				F91B93D213AE8F4400271FCE /* PictureMapViewController.m */,
+				F93A931C13BBDC5E00832102 /* PictureMapViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -778,7 +778,6 @@
 				F91B93E313AE8F4400271FCE /* AssetClusterAnnotation.m in Sources */,
 				F91B93E413AE8F4400271FCE /* AssetController.m in Sources */,
 				F91B93E513AE8F4400271FCE /* CountView.m in Sources */,
-				F91B93E713AE8F4400271FCE /* PictureMapViewController.m in Sources */,
 				F91B93E813AE8F4400271FCE /* Photo.m in Sources */,
 				F91B93E913AE8F4400271FCE /* PhotoAnnotationView.m in Sources */,
 				F91B93EA13AE8F4400271FCE /* PhotoSet.m in Sources */,
@@ -787,6 +786,7 @@
 				F91B93ED13AE8F4400271FCE /* URLParser.m in Sources */,
 				F91B94B313AEA37B00271FCE /* SettingsViewController.m in Sources */,
 				F99A4F2313B911B10025EB7E /* ThumbsViewController.m in Sources */,
+				F93A931D13BBDC5E00832102 /* PictureMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
