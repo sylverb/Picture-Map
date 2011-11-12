@@ -13,6 +13,7 @@
     #import <CoreGraphics/CoreGraphics.h>
     #import <Foundation/Foundation.h>
     #import <MapKit/MapKit.h>
+    #import "ALAssetsLibrary.h"
     #import "ALAssetAdditions.h"
     #import "UIImageAdditions.h"
 #endif

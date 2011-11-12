@@ -26,7 +26,6 @@
 
 #import <MapKit/MapKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "PictureMapAppDelegate.h"
 #import "AssetController.h"
 #import "AssetAnnotation.h"
 
@@ -144,11 +143,10 @@
                        };	
                        
                        // Enumerate Albums
-                       ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];        
+                       ALAssetsLibrary *library = [ALAssetsLibrary defaultAssetsLibrary];        
                        [library enumerateGroupsWithTypes:ALAssetsGroupAll
                                               usingBlock:assetGroupEnumerator 
                                             failureBlock:assetGroupEnumberatorFailure];
-                       [library release];
                        
                        [pool release];
                    });

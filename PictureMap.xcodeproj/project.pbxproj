@@ -52,6 +52,7 @@
 		F93F33F513B7204B004BDBF6 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33EE13B7204B004BDBF6 /* Icon-Small@2x.png */; };
 		F93F33F613B7204B004BDBF6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93F33EF13B7204B004BDBF6 /* Icon@2x.png */; };
 		F93F33F713B7204B004BDBF6 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = F93F33F013B7204B004BDBF6 /* iTunesArtwork */; };
+		F974DA4A146F360600CD960F /* ALAssetsLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = F974DA49146F360600CD960F /* ALAssetsLibrary.m */; };
 		F99A4F0713B7D7920025EB7E /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = F99A4F0513B7D7920025EB7E /* locate.png */; };
 		F99A4F0813B7D7920025EB7E /* locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99A4F0613B7D7920025EB7E /* locate@2x.png */; };
 		F99A4F2013B7E4EA0025EB7E /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F99A4F1F13B7E4EA0025EB7E /* Three20.bundle */; };
@@ -272,6 +273,8 @@
 		F93F33EE13B7204B004BDBF6 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Ressources/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		F93F33EF13B7204B004BDBF6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Ressources/Icon@2x.png"; sourceTree = "<group>"; };
 		F93F33F013B7204B004BDBF6 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Ressources/iTunesArtwork; sourceTree = "<group>"; };
+		F974DA48146F360600CD960F /* ALAssetsLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALAssetsLibrary.h; path = Classes/ALAssetsLibrary.h; sourceTree = "<group>"; };
+		F974DA49146F360600CD960F /* ALAssetsLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALAssetsLibrary.m; path = Classes/ALAssetsLibrary.m; sourceTree = "<group>"; };
 		F99A4F0513B7D7920025EB7E /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = locate.png; path = Ressources/locate.png; sourceTree = "<group>"; };
 		F99A4F0613B7D7920025EB7E /* locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "locate@2x.png"; path = "Ressources/locate@2x.png"; sourceTree = "<group>"; };
 		F99A4F1F13B7E4EA0025EB7E /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = "<group>"; };
@@ -527,6 +530,8 @@
 		F91B93F513AE8FC400271FCE /* additions */ = {
 			isa = PBXGroup;
 			children = (
+				F974DA48146F360600CD960F /* ALAssetsLibrary.h */,
+				F974DA49146F360600CD960F /* ALAssetsLibrary.m */,
 				F91B93B713AE8F4400271FCE /* ALAssetAdditions.h */,
 				F91B93B813AE8F4400271FCE /* ALAssetAdditions.m */,
 				F91B93DC13AE8F4400271FCE /* UIImageAdditions.h */,
@@ -787,6 +792,7 @@
 				F91B94B313AEA37B00271FCE /* SettingsViewController.m in Sources */,
 				F99A4F2313B911B10025EB7E /* ThumbsViewController.m in Sources */,
 				F93A931D13BBDC5E00832102 /* PictureMapViewController.m in Sources */,
+				F974DA4A146F360600CD960F /* ALAssetsLibrary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
