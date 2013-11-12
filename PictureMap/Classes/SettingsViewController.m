@@ -275,7 +275,7 @@
                                      NSLocalizedString(@"Satellite", nil),
                                      NSLocalizedString(@"Hybrid", nil),
                                      nil];
-                    CGRect frame = CGRectMake(5, 7, 290, 44);
+                    CGRect frame = CGRectMake(5, 0, 290, 44);
                     UISegmentedControl *segCtrl = [[[UISegmentedControl alloc] initWithItems:text] autorelease];
                     segCtrl.frame = frame;
                     if ([prefs objectForKey:@"MapType"]) {

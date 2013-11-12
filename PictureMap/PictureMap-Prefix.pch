@@ -15,5 +15,7 @@
     #import <MapKit/MapKit.h>
     #import "ALAssetsLibrary.h"
     #import "ALAssetAdditions.h"
-    #import "UIImageAdditions.h"
+    #import "UIImage+Resize.h"
+    #import "UIImage+RoundedCorner.h"
+    #import "UIImage+Alpha.h"
 #endif

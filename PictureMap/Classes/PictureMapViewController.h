@@ -26,14 +26,27 @@
 
 #import "AssetController.h"
 
-@interface PictureMapViewController : UIViewController <MKMapViewDelegate, UIPopoverControllerDelegate, CLLocationManagerDelegate> {
+#ifdef ADMOB
+#import "GADBannerView.h"
+#endif
+
+@interface PictureMapViewController : UIViewController <MKMapViewDelegate, UIPopoverControllerDelegate, CLLocationManagerDelegate
+#ifdef ADMOB
+, GADBannerViewDelegate
+#endif
+>{
     AssetController *_assetController;
     MKMapView *_mapView;
     
     CLLocationManager *_locationManager;
     
     UIPopoverController *popoverController;
+    
+#ifdef ADMOB
+    GADBannerView *bannerView_;
+#endif
 }
+
 @property (nonatomic, retain) MKMapView *mapView;
 @property (nonatomic, retain) AssetController *assetController;
 @property (nonatomic, retain) CLLocationManager *locationManager;

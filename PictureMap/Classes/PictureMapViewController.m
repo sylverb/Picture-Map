@@ -37,7 +37,6 @@
 #import "PhotoViewController.h"
 #import "ThumbsViewController.h"
 
-
 @interface PictureMapViewController ()
 @property (nonatomic, retain) AnnotationClusterer *annotationClusterer;
 
@@ -80,6 +79,22 @@
     return YES;
 }
 
+#ifdef ADMOB
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    bannerView_.frame = CGRectMake((self.view.frame.size.width - bannerView_.frame.size.width)/2,
+                                  self.view.frame.size.height -
+                                  self.navigationController.toolbar.viewForBaselineLayout.frame.size.height -
+                                  bannerView_.frame.size.height,
+                                  bannerView_.frame.size.width,
+                                  bannerView_.frame.size.height);
+    CGRect frame = self.view.bounds;
+    frame.size.height -= self.navigationController.toolbar.viewForBaselineLayout.frame.size.height + bannerView_.frame.size.height;
+    _mapView.frame = frame;
+}
+#endif
+
 #pragma mark -
 #pragma mark UIViewController Methods
 - (void)viewDidLoad {
@@ -96,8 +111,15 @@
         MKCoordinateSpan coordinateSpan = MKCoordinateSpanMake([prefs floatForKey:@"SpanDeltaLatitude"], [prefs floatForKey:@"SpanDeltaLongitude"]);
         MKCoordinateRegion coordinateRegion = MKCoordinateRegionMake(centerPoint, coordinateSpan);
         
-        [_mapView setRegion:coordinateRegion animated: FALSE];
-        [_mapView regionThatFits:coordinateRegion];
+        if ((!isnan(coordinateRegion.center.latitude)) &&
+            (!isnan(coordinateRegion.center.longitude)) &&
+            (!isnan(coordinateRegion.span.latitudeDelta)) &&
+            (!isnan(coordinateRegion.span.longitudeDelta))
+            )
+        {
+            [_mapView setRegion:coordinateRegion animated: FALSE];
+            [_mapView regionThatFits:coordinateRegion];
+        }
     }
     
     _mapView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -159,7 +181,42 @@
                              nil];
     self.toolbarItems = toolbarItems;
     [toolbarItems makeObjectsPerformSelector:@selector(release)];
+    
+#ifdef ADMOB
+    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    bannerView_.adUnitID = @"ca-app-pub-3948587941320427/7177381997";
+    bannerView_.rootViewController = self;
+    [bannerView_ setDelegate:self];
+    bannerView_.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+
+    [self.view addSubview:bannerView_];
+    
+    GADRequest *request = [GADRequest request];
+    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, @"dbca6fd8dcebf709baa9d82507f7724d", nil];
+    
+    [bannerView_ loadRequest:request];
+#endif
 }
+
+#ifdef ADMOB
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView
+{
+    NSLog(@"Received ad successfully");
+    bannerView.frame = CGRectMake((self.view.frame.size.width - bannerView.frame.size.width)/2,
+                                  self.view.frame.size.height -
+                                  self.navigationController.toolbar.viewForBaselineLayout.frame.size.height -
+                                  bannerView.frame.size.height,
+                                  bannerView.frame.size.width,
+                                  bannerView.frame.size.height);
+    CGRect frame = self.view.bounds;
+    frame.size.height -= self.navigationController.toolbar.viewForBaselineLayout.frame.size.height + bannerView.frame.size.height;
+    _mapView.frame = frame;
+}
+
+- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"Failed to receive ad with error: %@", [error localizedFailureReason]);
+}
+#endif
 
 - (void)viewWillAppear:(BOOL)animated
 {

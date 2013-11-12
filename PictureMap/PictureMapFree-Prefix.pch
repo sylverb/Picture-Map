@@ -1,0 +1,23 @@
+//
+// Prefix header for all source files of the 'PictureMap' target in the 'PictureMap' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <CoreGraphics/CoreGraphics.h>
+    #import <Foundation/Foundation.h>
+    #import <MapKit/MapKit.h>
+    #import "ALAssetsLibrary.h"
+    #import "ALAssetAdditions.h"
+    #import "UIImage+Resize.h"
+    #import "UIImage+RoundedCorner.h"
+    #import "UIImage+Alpha.h"
+#endif
+
+#define ADMOB

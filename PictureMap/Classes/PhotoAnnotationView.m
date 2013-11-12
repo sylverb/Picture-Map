@@ -26,7 +26,6 @@
 
 #import "PhotoAnnotationView.h"
 #import "AssetClusterAnnotation.h"
-#import "UIImageAdditions.h"
 
 @implementation PhotoAnnotationView
 
@@ -57,7 +56,8 @@
 		self.backgroundColor = [UIColor clearColor];
         self.alpha = annotationAlpha;
         
-        UIImage *imageFromFile = [[assetClusterAnnotation.thumbnail makeRoundCornerImage:15 :15] imageScaledToSize:CGSizeMake(kWidth, kHeight)];
+        UIImage *imageFromFile = [[assetClusterAnnotation.thumbnail roundedCornerImage:15 borderSize:0] resizedImage:CGSizeMake(kWidth, kHeight)
+                                                           interpolationQuality:kCGInterpolationHigh];
         
         self.image = imageFromFile;
 
