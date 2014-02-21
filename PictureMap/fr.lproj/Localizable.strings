@@ -1,4 +1,5 @@
 "Settings" = "Réglages";
+"Representation on map" = "Représentation sur la carte";
 "Thumbnails on map" = "Miniatures sur la carte";
 "Map settings" = "Réglages de la carte";
 "Files to show on map" = "Fichiers à montrer sur la carte";
@@ -7,6 +8,8 @@
 "Warning" = "Attention";
 "There are not geotagged photos available in the selection, please change your selection or add geotagged photos on your device" = "Il n'y a pas de photos géotaggées dans la sélection, merci d'élargir la sélection ou d'ajouter des photos géotagguées sur votre appareil";
 
+"Photos" = "Photos";
+"Pins" = "Epingles";
 "Transparency" = "Transparence";
 "Standard" = "Plan";
 "Satellite" = "Satellite";

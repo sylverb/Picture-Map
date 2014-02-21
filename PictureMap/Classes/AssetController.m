@@ -69,86 +69,84 @@
 
     dispatch_async(dispatch_get_main_queue(), ^
                    {
-                       NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+                       @autoreleasepool {
                        
-                       NSMutableArray *groupsArray = [NSMutableArray array];
-                       NSMutableDictionary *assetUrlDict = [NSMutableDictionary dictionary];
-                       __block NSInteger parsedArrayCount = 0;
-                       
-                       // Remove previous objects
-                       [assetItems removeAllObjects];
-                       
-                       // Asset enumerator Block
-                       void (^assetEnumerator)(ALAsset *, NSUInteger, BOOL *) = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
-                           if(result != nil) {
-                               CLLocation *location = [result valueForProperty:@"ALAssetPropertyLocation"];
-                               if ((location != nil) && (CLLocationCoordinate2DIsValid(location.coordinate))) {
-                                   NSString *type = [result valueForProperty:@"ALAssetPropertyType"];
-                                   if (((type == ALAssetTypePhoto) && (parsePhotos)) ||
-                                       ((type == ALAssetTypeVideo) && (parseVideos))) {
-                                       NSString *url = [[[result defaultRepresentation] url] absoluteString];
-                                       // If no element with this URL already exists, add it
-                                       if (![assetUrlDict objectForKey:url]) {
-                                           AssetAnnotation *anno = [[AssetAnnotation alloc] init];		
-                                           [anno setTitle:[result fileName]];
-                                           [anno setLatitude:location.coordinate.latitude];
-                                           [anno setLongitude:location.coordinate.longitude];
-                                           [anno setAlAsset:result];
-                                           [assetItems addObject:anno];
-                                           [anno release];
-                                           // Add the URL in the list of added elements
-                                           [assetUrlDict setObject:@"foo" forKey:url];
+                           NSMutableArray *groupsArray = [NSMutableArray array];
+                           NSMutableDictionary *assetUrlDict = [NSMutableDictionary dictionary];
+                           __block NSInteger parsedArrayCount = 0;
+                           
+                           // Remove previous objects
+                           [assetItems removeAllObjects];
+                           
+                           // Asset enumerator Block
+                           void (^assetEnumerator)(ALAsset *, NSUInteger, BOOL *) = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                               if(result != nil) {
+                                   CLLocation *location = [result valueForProperty:@"ALAssetPropertyLocation"];
+                                   if ((location != nil) && (CLLocationCoordinate2DIsValid(location.coordinate))) {
+                                       NSString *type = [result valueForProperty:@"ALAssetPropertyType"];
+                                       if (((type == ALAssetTypePhoto) && (parsePhotos)) ||
+                                           ((type == ALAssetTypeVideo) && (parseVideos))) {
+                                           NSString *url = [[[result defaultRepresentation] url] absoluteString];
+                                           // If no element with this URL already exists, add it
+                                           if (!assetUrlDict[url]) {
+                                               AssetAnnotation *anno = [[AssetAnnotation alloc] init];		
+                                               [anno setTitle:[result fileName]];
+                                               [anno setLatitude:location.coordinate.latitude];
+                                               [anno setLongitude:location.coordinate.longitude];
+                                               [anno setAlAsset:result];
+                                               [assetItems addObject:anno];
+                                               // Add the URL in the list of added elements
+                                               assetUrlDict[url] = @"foo";
+                                           }
                                        }
                                    }
+                                   return;
+                               } else {
+                                   parsedArrayCount ++;
+                                   // If last group parsed, send a notification to main controller
+                                   if (parsedArrayCount == [groupsArray count]) {
+                                       [[NSNotificationCenter defaultCenter] postNotificationName:@"assetsParsingEnded"
+                                                                                           object:self
+                                                                                         userInfo:nil];
+                                   }
                                }
-                               return;
-                           } else {
-                               parsedArrayCount ++;
-                               // If last group parsed, send a notification to main controller
-                               if (parsedArrayCount == [groupsArray count]) {
-                                   [[NSNotificationCenter defaultCenter] postNotificationName:@"assetsParsingEnded"
-                                                                                       object:self
-                                                                                     userInfo:nil];
-                               }
-                           }
-                       };
-                       
-                       // Group enumerator Block
-                       void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop) {
-                           if (group != nil) {
-                               // Check if we want to parse this album
-                               if ([dict objectForKey:[group valueForProperty:ALAssetsGroupPropertyPersistentID]]) {
-                                   if ([[dict objectForKey:[group valueForProperty:ALAssetsGroupPropertyPersistentID]] boolValue]) {
+                           };
+                           
+                           // Group enumerator Block
+                           void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop) {
+                               if (group != nil) {
+                                   // Check if we want to parse this album
+                                   if (dict[[group valueForProperty:ALAssetsGroupPropertyPersistentID]]) {
+                                       if ([dict[[group valueForProperty:ALAssetsGroupPropertyPersistentID]] boolValue]) {
+                                           [groupsArray addObject:group];
+                                       }
+                                   } else {
                                        [groupsArray addObject:group];
                                    }
                                } else {
-                                   [groupsArray addObject:group];
+                                   // Last group parsed, now parse ALAssets of each group
+                                   for (ALAssetsGroup *assetGroups in groupsArray) {
+                                       [assetGroups enumerateAssetsUsingBlock:assetEnumerator];
+                                   }
                                }
-                           } else {
-                               // Last group parsed, now parse ALAssets of each group
-                               for (ALAssetsGroup *assetGroups in groupsArray) {
-                                   [assetGroups enumerateAssetsUsingBlock:assetEnumerator];
-                               }
-                           }
-                       };
-                       
-                       // Group Enumerator Failure Block
-                       void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
+                           };
                            
-                           UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Album Error: %@", [error description]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-                           [alert show];
-                           [alert release];
+                           // Group Enumerator Failure Block
+                           void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
+                               
+                               UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Album Error: %@", [error description]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                               [alert show];
+                               
+                               NSLog(@"A problem occured %@", [error description]);
+                           };	
                            
-                           NSLog(@"A problem occured %@", [error description]);
-                       };	
+                           // Enumerate Albums
+                           ALAssetsLibrary *library = [ALAssetsLibrary defaultAssetsLibrary];        
+                           [library enumerateGroupsWithTypes:ALAssetsGroupAll
+                                                  usingBlock:assetGroupEnumerator 
+                                                failureBlock:assetGroupEnumberatorFailure];
                        
-                       // Enumerate Albums
-                       ALAssetsLibrary *library = [ALAssetsLibrary defaultAssetsLibrary];        
-                       [library enumerateGroupsWithTypes:ALAssetsGroupAll
-                                              usingBlock:assetGroupEnumerator 
-                                            failureBlock:assetGroupEnumberatorFailure];
-                       
-                       [pool release];
+                       }
                    });
 }
 

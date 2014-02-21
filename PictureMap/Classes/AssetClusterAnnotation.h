@@ -40,17 +40,17 @@
   UIImage *thumbnail;
 }
 
-@property (nonatomic, retain) AnnotationClusterer *clusterer;
-@property (nonatomic, retain) MKMapView *mapView;
-@property (nonatomic, retain) NSMutableArray *annotations;
-@property (nonatomic, retain) UIImage *thumbnail;
+@property (nonatomic, strong) AnnotationClusterer *clusterer;
+@property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) NSMutableArray *annotations;
+@property (nonatomic, strong) UIImage *thumbnail;
 @property double centerLatitude;
 @property double centerLongitude;
 
 -(id) initWithAnnotationClusterer:(AnnotationClusterer*) clusterer;
 -(void) addAnnotation: (id <MKAnnotation>) annotation;
 -(BOOL) removeAnnotation:(id <MKAnnotation>) annotation;
--(int) totalMarkers;
--(int) totalPhotoMarkers;
--(int) totalVideoMarkers;
+-(NSUInteger) totalMarkers;
+-(NSUInteger) totalPhotoMarkers;
+-(NSUInteger) totalVideoMarkers;
 @end

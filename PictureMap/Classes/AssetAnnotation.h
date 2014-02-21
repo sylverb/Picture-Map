@@ -36,7 +36,7 @@
 }
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, retain) ALAsset *alAsset;
+@property (nonatomic, strong) ALAsset *alAsset;
 @property double latitude;
 @property double longitude;
 

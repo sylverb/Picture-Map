@@ -31,7 +31,7 @@
     NSMutableArray *assetItems;
 }
 
-@property (nonatomic, retain) NSMutableArray *assetItems;
+@property (nonatomic, strong) NSMutableArray *assetItems;
 
 // This method will parse assets
 -(void) parseAssets;

@@ -1,4 +1,5 @@
 "Settings" = "Settings";
+"Representation on map" = "Representation on map";
 "Thumbnails on map" = "Thumbnails on map";
 "Map settings" = "Map settings";
 "Files to show on map" = "Files to show on map";
@@ -7,6 +8,8 @@
 "Warning" = "Warning";
 "There are not geotagged photos available in the selection, please change your selection or add geotagged photos on your device" = "There are not geotagged photos available in the selection, please change your selection or add geotagged photos on your device";
 
+"Photos" = "Photos";
+"Pins" = "Pins";
 "Transparency" = "Transparency";
 "Standard" = "Standard";
 "Satellite" = "Satellite";

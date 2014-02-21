@@ -39,15 +39,20 @@
 
 - (id)initWithMapAndAnnotations:(MKMapView *)paramMapView {
   
-  if ((self = [super init])) {
-    // Custom initialization
-    gridSize = 57; //size of the annotation in pixels on the map
-    clusters = [NSMutableArray new];
-    self.mapView = paramMapView;
-  }
-  
-  return self;
+    if ((self = [super init])) {
+        // Custom initialization
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        if ([prefs integerForKey:@"MarkType"] == 0) {
+            gridSize = 57; //size of the annotation in pixels on the map
+        } else if ([prefs integerForKey:@"MarkType"] == 1) {
+            gridSize = 30; //size of the annotation in pixels on the map
+        }
 
+        clusters = [NSMutableArray new];
+        self.mapView = paramMapView;
+    }
+    
+    return self;
 }
 
 -(void) addAnnotation:(id<MKAnnotation>)annotation {
@@ -80,7 +85,6 @@
         
         // Add this cluster both in clusters provided and clusters_
         [clusters addObject:cluster];
-        [cluster release];
     }
 }
 
@@ -94,11 +98,11 @@
   [clusters removeAllObjects];
 }
 
--(int) totalClusters {
+-(NSUInteger) totalClusters {
   return [clusters count];
 }
 
--(int) totalAnnotations {
+-(NSUInteger) totalAnnotations {
   int result = 0;
   
   for(AssetClusterAnnotation *arrayCluster in clusters) {
@@ -108,10 +112,5 @@
   return result;
 }
 
-- (void)dealloc {
-  [clusters release];
-  [mapView release];
-  [super dealloc];
-}
 
 @end

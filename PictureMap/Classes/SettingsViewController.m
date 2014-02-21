@@ -36,6 +36,8 @@
 #define TAG_SWITCH_VIDEOS 2
 #define TAG_SLIDER_SIZE         1
 #define TAG_SLIDER_TRANSPARENCY 2
+#define TAG_SEGCTRL_MARKTYPE 0
+#define TAG_SEGCTRL_MAPTYPE  1
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,44 +54,39 @@
     
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
 	self.assetGroups = tempArray;
-    [tempArray release];
     
     // Load Albums into assetGroups
     dispatch_async(dispatch_get_main_queue(), ^
                    {
-                       NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+                       @autoreleasepool {
                        
                        // Group enumerator Block
-                       void (^assetGroupEnumerator)(ALAssetsGroup *group, BOOL *stop) = ^(ALAssetsGroup *group, BOOL *stop) {
-                           if (group != nil) {
-                               [self.assetGroups addObject:group];
+                           void (^assetGroupEnumerator)(ALAssetsGroup *group, BOOL *stop) = ^(ALAssetsGroup *group, BOOL *stop) {
+                               if (group != nil) {
+                                   [self.assetGroups addObject:group];
+                                   
+                                   // Reload albums
+                                   [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:YES];
+                               }
                                
-                               // Keep this line!  w/o it the asset count is broken for some reason.  Makes no sense
-                               //                               NSLog(@"count: %d", [group numberOfAssets]);
+                           };
+                           
+                           // Group Enumerator Failure Block
+                           void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
                                
-                               // Reload albums
-                               [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:YES];
-                           }
+                               UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Album Error: %@", [error description]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                               [alert show];
+                               
+                               NSLog(@"A problem occured %@", [error description]);
+                           };	
                            
-                       };
+                           // Enumerate Albums
+                           ALAssetsLibrary *library = [ALAssetsLibrary defaultAssetsLibrary];
+                           [library enumerateGroupsWithTypes:ALAssetsGroupAll
+                                                  usingBlock:assetGroupEnumerator 
+                                                failureBlock:assetGroupEnumberatorFailure];
                        
-                       // Group Enumerator Failure Block
-                       void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
-                           
-                           UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Album Error: %@", [error description]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-                           [alert show];
-                           [alert release];
-                           
-                           NSLog(@"A problem occured %@", [error description]);
-                       };	
-                       
-                       // Enumerate Albums
-                       ALAssetsLibrary *library = [ALAssetsLibrary defaultAssetsLibrary];
-                       [library enumerateGroupsWithTypes:ALAssetsGroupAll
-                                              usingBlock:assetGroupEnumerator 
-                                            failureBlock:assetGroupEnumberatorFailure];
-                       
-                       [pool release];
+                       }
                    });
 }
 
@@ -119,19 +116,19 @@
     // Load Albums into assetGroups
     dispatch_async(dispatch_get_main_queue(), ^
                    {
-                       NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+                       @autoreleasepool {
                        
                        // Group enumerator Block
-                       void (^assetEnumerator)(ALAsset *result, NSUInteger index, BOOL *stop) = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
-                           if(result != nil) {
-                               return;
-                           }
-                       };
+                           void (^assetEnumerator)(ALAsset *result, NSUInteger index, BOOL *stop) = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                               if(result != nil) {
+                                   return;
+                               }
+                           };
+                           
+                           if ([assetGroups count])
+                               [assetGroups[0] enumerateAssetsUsingBlock:assetEnumerator];
                        
-                       if ([assetGroups count])
-                           [[assetGroups objectAtIndex:0] enumerateAssetsUsingBlock:assetEnumerator];
-                       
-                       [pool release];
+                       }
                    });    
 }
 
@@ -140,7 +137,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -154,9 +151,12 @@
             rows = 1;
             break;
         case 2 :
-            rows = 2;
+            rows = 1;
             break;
         case 3 :
+            rows = 2;
+            break;
+        case 4 :
             if (allAlbumsSelected) {
                 rows = 1;
             } else {
@@ -170,18 +170,21 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	NSString * title = @"";
+	NSString * title = nil;
 	switch (section) {
 		case 0:
-			title = NSLocalizedString(@"Thumbnails on map",nil);
+			title = NSLocalizedString(@"Representation on map",nil);
 			break;
 		case 1:
-			title = NSLocalizedString(@"Map settings",nil);
+			title = NSLocalizedString(@"Thumbnails on map",nil);
 			break;
 		case 2:
-			title = NSLocalizedString(@"Files to show on map",nil);
+			title = NSLocalizedString(@"Map settings",nil);
 			break;
 		case 3:
+			title = NSLocalizedString(@"Files to show on map",nil);
+			break;
+		case 4:
 			title = NSLocalizedString(@"Albums to show on map",nil);
 			break;
 	}
@@ -205,54 +208,12 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell = [tableView dequeueReusableCellWithIdentifier:SliderCellIdentifier];
-                    if (cell == nil) {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SliderCellIdentifier] autorelease];
-                    }
-                    
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                    cell.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
-                    cell.textLabel.text = NSLocalizedString(@"Transparency",nil);
-                    
-                    // UISlider setup
-                    NSArray *cellSubViews = [[cell.textLabel superview] subviews];
-                    for (id item in cellSubViews) {
-                        if ([item isKindOfClass:[UISlider class]]) {
-                            UISlider *oldSlider = (UISlider *)item;
-                            [oldSlider removeFromSuperview];
-                            break;
-                        }
-                    }
-                    
-                    CGRect frame = CGRectMake(130, 0, 160, 44);
-                    UISlider *slider = [[[UISlider alloc] init] autorelease];
-                    slider.frame = frame;
-                    float annotationAlpha = 1.0;
-                    if ([prefs objectForKey:@"AnnotationAlpha"]) {
-                        annotationAlpha = [prefs floatForKey:@"AnnotationAlpha"];
-                    }
-                    slider.value = annotationAlpha;
-                    [slider addTarget:self
-                               action:@selector(sliderValueChanged:)
-                     forControlEvents:UIControlEventValueChanged];
-                    slider.tag = TAG_SLIDER_TRANSPARENCY;
-                    [[cell.textLabel superview] addSubview:slider];
-                    break;
-                }
-            }
-            break;
-        }
-        case 1:
-        {
-            switch (indexPath.row) {
-                case 0:
-                {
                     cell = [tableView dequeueReusableCellWithIdentifier:SegCtrlCellIdentifier];
                     if (cell == nil) {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SegCtrlCellIdentifier] autorelease];
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SegCtrlCellIdentifier];
                         
                         // Make transparent background
-                        UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+                        UIView *backView = [[UIView alloc] initWithFrame:CGRectZero];
                         backView.backgroundColor = [UIColor clearColor];
                         cell.backgroundView = backView;
                     }
@@ -270,13 +231,101 @@
                         }
                     }
                     
-                    NSArray *text = [NSArray arrayWithObjects:
-                                     NSLocalizedString(@"Standard", nil),
+                    NSArray *text = @[NSLocalizedString(@"Photos", nil),
+                                      NSLocalizedString(@"Pins", nil)];
+                    CGRect frame = CGRectMake(15, 0, 290, 44);
+                    UISegmentedControl *segCtrl = [[UISegmentedControl alloc] initWithItems:text];
+                    segCtrl.frame = frame;
+                    if ([prefs objectForKey:@"MarkType"]) {
+                        segCtrl.selectedSegmentIndex = [prefs integerForKey:@"MarkType"];
+                    } else {
+                        segCtrl.selectedSegmentIndex = 0;
+                    }
+                    [segCtrl addTarget:self
+                                action:@selector(segCtrlValueChanged:)
+                      forControlEvents:UIControlEventValueChanged];
+                    segCtrl.tag = TAG_SEGCTRL_MARKTYPE;
+                    [[cell.textLabel superview] addSubview:segCtrl];
+                    break;
+                }
+            }
+            break;
+        }
+        case 1:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell = [tableView dequeueReusableCellWithIdentifier:SliderCellIdentifier];
+                    if (cell == nil) {
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SliderCellIdentifier];
+                    }
+                    
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
+                    cell.textLabel.text = NSLocalizedString(@"Transparency",nil);
+                    
+                    // UISlider setup
+                    NSArray *cellSubViews = [[cell.textLabel superview] subviews];
+                    for (id item in cellSubViews) {
+                        if ([item isKindOfClass:[UISlider class]]) {
+                            UISlider *oldSlider = (UISlider *)item;
+                            [oldSlider removeFromSuperview];
+                            break;
+                        }
+                    }
+                    
+                    CGRect frame = CGRectMake(130, 0, 160, 44);
+                    UISlider *slider = [[UISlider alloc] init];
+                    slider.frame = frame;
+                    float annotationAlpha = 1.0;
+                    if ([prefs objectForKey:@"AnnotationAlpha"]) {
+                        annotationAlpha = [prefs floatForKey:@"AnnotationAlpha"];
+                    }
+                    slider.value = annotationAlpha;
+                    [slider addTarget:self
+                               action:@selector(sliderValueChanged:)
+                     forControlEvents:UIControlEventValueChanged];
+                    slider.tag = TAG_SLIDER_TRANSPARENCY;
+                    [[cell.textLabel superview] addSubview:slider];
+                    break;
+                }
+            }
+            break;
+        }
+        case 2:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell = [tableView dequeueReusableCellWithIdentifier:SegCtrlCellIdentifier];
+                    if (cell == nil) {
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SegCtrlCellIdentifier];
+                        
+                        // Make transparent background
+                        UIView *backView = [[UIView alloc] initWithFrame:CGRectZero];
+                        backView.backgroundColor = [UIColor clearColor];
+                        cell.backgroundView = backView;
+                    }
+                    
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
+                    
+                    // UISegmentedControl setup
+                    NSArray *cellSubViews = [[cell.textLabel superview] subviews];
+                    for (id item in cellSubViews) {
+                        if ([item isKindOfClass:[UISegmentedControl class]]) {
+                            UISegmentedControl *oldSegCtrl = (UISegmentedControl *)item;
+                            [oldSegCtrl removeFromSuperview];
+                            break;
+                        }
+                    }
+                    
+                    NSArray *text = @[NSLocalizedString(@"Standard", nil),
                                      NSLocalizedString(@"Satellite", nil),
-                                     NSLocalizedString(@"Hybrid", nil),
-                                     nil];
-                    CGRect frame = CGRectMake(5, 0, 290, 44);
-                    UISegmentedControl *segCtrl = [[[UISegmentedControl alloc] initWithItems:text] autorelease];
+                                     NSLocalizedString(@"Hybrid", nil)];
+                    CGRect frame = CGRectMake(15, 0, 290, 44);
+                    UISegmentedControl *segCtrl = [[UISegmentedControl alloc] initWithItems:text];
                     segCtrl.frame = frame;
                     if ([prefs objectForKey:@"MapType"]) {
                         switch ([prefs integerForKey:@"MapType"]) {
@@ -296,21 +345,21 @@
                     [segCtrl addTarget:self
                                 action:@selector(segCtrlValueChanged:)
                       forControlEvents:UIControlEventValueChanged];
-                    segCtrl.tag = 0;
+                    segCtrl.tag = TAG_SEGCTRL_MAPTYPE;
                     [[cell.textLabel superview] addSubview:segCtrl];
                     break;
                 }
             }
             break;
         }
-        case 2:
+        case 3:
         { 
             switch (indexPath.row) {
                 case 0:
                 {
                     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                     if (cell == nil) {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     }
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     
@@ -326,10 +375,10 @@
                         }
                     }
                     
-                    UISwitch *aswitch = [[[UISwitch alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width - 110,
+                    UISwitch *aswitch = [[UISwitch alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width - 70,
                                                                                     7,
                                                                                     100,
-                                                                                    30)] autorelease];
+                                                                                    30)];
                     aswitch.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 
                     BOOL parsePhotos = [prefs objectForKey:@"SyncPhotos"]?[prefs boolForKey:@"SyncPhotos"]:YES;
@@ -347,7 +396,7 @@
                 {
                     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                     if (cell == nil) {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     }
                     
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -364,10 +413,10 @@
                         }
                     }
                     
-                    UISwitch *aswitch = [[[UISwitch alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width - 110,
+                    UISwitch *aswitch = [[UISwitch alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width - 70,
                                                                                     7,
                                                                                     100,
-                                                                                    30)] autorelease];
+                                                                                    30)];
                     aswitch.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 
                     BOOL parseVideos = [prefs objectForKey:@"SyncVideos"]?[prefs boolForKey:@"SyncVideos"]:NO;
@@ -386,14 +435,14 @@
             }
             break;
         }
-        case 3:
+        case 4:
         {
             switch (indexPath.row) {
                 case 0:
                 {
                     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                     if (cell == nil) {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     }
                     
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -410,10 +459,10 @@
                         }
                     }
                     
-                    UISwitch *aswitch = [[[UISwitch alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width - 110,
+                    UISwitch *aswitch = [[UISwitch alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width - 70,
                                                                                     7,
                                                                                     100,
-                                                                                    30)] autorelease];
+                                                                                    30)];
                     aswitch.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 
                     [aswitch setOn:allAlbumsSelected animated:NO];
@@ -429,17 +478,17 @@
                 {                    
                     cell = [tableView dequeueReusableCellWithIdentifier:PhotoCellIdentifier];
                     if (cell == nil) {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PhotoCellIdentifier] autorelease];
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PhotoCellIdentifier];
                     }
                     
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.textLabel.font = [UIFont systemFontOfSize:13];
                     
                     // Get count
-                    ALAssetsGroup *g = (ALAssetsGroup*)[assetGroups objectAtIndex:indexPath.row - 1];
+                    ALAssetsGroup *g = (ALAssetsGroup*)assetGroups[indexPath.row - 1];
                     
                     cell.textLabel.text = [g valueForProperty:ALAssetsGroupPropertyName];
-                    [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup*)[assetGroups objectAtIndex:indexPath.row - 1] posterImage]]];
+                    [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup*)assetGroups[indexPath.row - 1] posterImage]]];
                     
                     // UISwitch setup
                     NSArray *cellSubViews = [[cell.textLabel superview] subviews];
@@ -451,16 +500,16 @@
                         }
                     }
 
-                    UISwitch *aswitch = [[[UISwitch alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width - 110,
+                    UISwitch *aswitch = [[UISwitch alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width - 70,
                                                                                     7,
                                                                                     100,
-                                                                                    30)] autorelease];
+                                                                                    30)];
                     aswitch.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 
                     if ([prefs objectForKey:@"SelectedAlbumsDict"]) {
                         NSMutableDictionary *dict = [prefs objectForKey:@"SelectedAlbumsDict"];
-                        if ([dict objectForKey:[g valueForProperty:ALAssetsGroupPropertyPersistentID]]) {
-                            [aswitch setOn:[[dict objectForKey:[g valueForProperty:ALAssetsGroupPropertyPersistentID]] boolValue]
+                        if (dict[[g valueForProperty:ALAssetsGroupPropertyPersistentID]]) {
+                            [aswitch setOn:[dict[[g valueForProperty:ALAssetsGroupPropertyPersistentID]] boolValue]
                                   animated:NO];
                         } else {
                             [aswitch setOn:YES
@@ -494,7 +543,7 @@
 
 
 - (void)switchValueChanged:(id)sender {
-	int tag = ((UISwitch *)sender).tag;
+	NSInteger tag = ((UISwitch *)sender).tag;
     switch (tag) {
         case TAG_SWITCH_PHOTOS:
         {
@@ -513,15 +562,28 @@
 
 - (void)segCtrlValueChanged:(UISegmentedControl *)segCtrl {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSInteger mapType = 0;
-	if(segCtrl.selectedSegmentIndex == 0) {
-		mapType = MKMapTypeStandard;
-	} else if (segCtrl.selectedSegmentIndex == 1) {
-		mapType = MKMapTypeSatellite;
-	} else if (segCtrl.selectedSegmentIndex == 2) {
-		mapType = MKMapTypeHybrid;
-	}
-    [prefs setInteger:mapType forKey:@"MapType"];
+    switch (segCtrl.tag) {
+        case TAG_SEGCTRL_MARKTYPE:
+        {
+            [prefs setInteger:segCtrl.selectedSegmentIndex forKey:@"MarkType"];
+            break;
+        }
+        case TAG_SEGCTRL_MAPTYPE:
+        {
+            NSInteger mapType = 0;
+            if(segCtrl.selectedSegmentIndex == 0) {
+                mapType = MKMapTypeStandard;
+            } else if (segCtrl.selectedSegmentIndex == 1) {
+                mapType = MKMapTypeSatellite;
+            } else if (segCtrl.selectedSegmentIndex == 2) {
+                mapType = MKMapTypeHybrid;
+            }
+            [prefs setInteger:mapType forKey:@"MapType"];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 - (void)switchAllAlbumValueChanged:(id)sender {
@@ -533,10 +595,10 @@
 }
 
 - (void)switchAlbumValueChanged:(id)sender {
-	int tag = ((UISwitch *)sender).tag;
+	NSInteger tag = ((UISwitch *)sender).tag;
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
-    ALAssetsGroup *g = (ALAssetsGroup*)[assetGroups objectAtIndex:tag];
+    ALAssetsGroup *g = (ALAssetsGroup*)assetGroups[tag];
     
     NSMutableDictionary *dict = nil;
     if ([prefs objectForKey:@"SelectedAlbumsDict"]) {
@@ -544,7 +606,7 @@
     } else {
         dict = [NSMutableDictionary dictionary];
     }
-    [dict setObject:[NSNumber numberWithBool:[sender isOn]] forKey:[g valueForProperty:ALAssetsGroupPropertyPersistentID]];
+    dict[[g valueForProperty:ALAssetsGroupPropertyPersistentID]] = @([sender isOn]);
 
     [prefs setObject:dict forKey:@"SelectedAlbumsDict"];
 }
@@ -566,8 +628,5 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 @end

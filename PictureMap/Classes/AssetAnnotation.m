@@ -41,11 +41,5 @@
   return theCoordinate; 
 }
 
-- (void)dealloc
-{
-  [alAsset release];
-  [title release];
-  [super dealloc];
-}
 
 @end

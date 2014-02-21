@@ -33,12 +33,12 @@
 #import "AssetController.h"
 #import "PhotoAnnotationView.h"
 
-#import "Photo.h"
-#import "PhotoViewController.h"
-#import "ThumbsViewController.h"
+#ifdef ADMOB
+#import "AdId.h"
+#endif
 
 @interface PictureMapViewController ()
-@property (nonatomic, retain) AnnotationClusterer *annotationClusterer;
+@property (nonatomic, strong) AnnotationClusterer *annotationClusterer;
 
 
 - (void)updateAssetsOnRegion:(NSValue *)value;
@@ -67,11 +67,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"zoomToLocation"
                                                   object:nil];
-	[self setAnnotationClusterer:nil];
-	[self setMapView:nil];
-    [self setAssetController:nil];
-    [self setLocationManager:nil];
-	[super dealloc];
 }
 
 
@@ -100,6 +95,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
+    needsToReloadClusterer = NO;
+    
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 
     _mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
@@ -154,8 +151,7 @@
     // Parse assets
     [_assetController parseAssets];
 
-    NSArray* toolbarItems = [NSArray arrayWithObjects:
-                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
+    NSArray* toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
                                                                            target:nil
                                                                            action:nil],
                              [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"locate"]
@@ -177,14 +173,13 @@
                                                              action:@selector(settings:)],
                              [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
                                                                            target:nil
-                                                                           action:nil],
-                             nil];
+                                                                           action:nil]];
     self.toolbarItems = toolbarItems;
-    [toolbarItems makeObjectsPerformSelector:@selector(release)];
-    
+//    [toolbarItems makeObjectsPerformSelector:@selector(release)];
+
 #ifdef ADMOB
     bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-    bannerView_.adUnitID = @"ca-app-pub-3948587941320427/7177381997";
+    bannerView_.adUnitID = PICTUREMAP_BANNER_ID;
     bannerView_.rootViewController = self;
     [bannerView_ setDelegate:self];
     bannerView_.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -192,7 +187,7 @@
     [self.view addSubview:bannerView_];
     
     GADRequest *request = [GADRequest request];
-    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, @"dbca6fd8dcebf709baa9d82507f7724d", nil];
+    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, IPHONE5S_ID, nil];
     
     [bannerView_ loadRequest:request];
 #endif
@@ -249,7 +244,6 @@
                                                    cancelButtonTitle:@"Ok"
                                                    otherButtonTitles:nil];
             [alert show];
-            [alert release];
         }
         MKCoordinateRegion currentRegion = [_mapView region];
         NSValue *regionAsValue = [NSValue valueWithBytes:&currentRegion objCType:@encode(MKCoordinateRegion)];
@@ -267,7 +261,7 @@
         // Parse assets
         [_assetController parseAssets];
     } else if ([pNotification.name isEqualToString:@"zoomToLocation"]) {
-        CLLocation *location = [pNotification.userInfo objectForKey:@"location"];
+        CLLocation *location = (pNotification.userInfo)[@"location"];
         if (CLLocationCoordinate2DIsValid(location.coordinate)) {
             MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500);
             [_mapView setRegion:region animated:YES];
@@ -294,70 +288,112 @@
     [prefs setDouble: currentRegion.span.longitudeDelta forKey: @"SpanDeltaLongitude"];
 }
 
-
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id<MKAnnotation>)annotation {
-	static NSString *kAnnotationViewIdentifier = @"MKPhotoAnnotationViewID";
+	static NSString *kPhotoAnnotationViewIdentifier = @"MKPhotoAnnotationViewID";
+	static NSString *kPinAnnotationViewIdentifier = @"MKPinAnnotationViewID";
 
-	if (![annotation isKindOfClass:[AssetClusterAnnotation class]])
-	{
-		return nil;
+    MKAnnotationView *annotationView = nil;
+    AssetClusterAnnotation *assetClusterAnnotation = (AssetClusterAnnotation *)annotation;
+    if ([annotation isKindOfClass:[AssetClusterAnnotation class]]) {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        if ([prefs integerForKey:@"MarkType"] == 0) { // Thumbnails
+            // See if we can reduce, reuse, recycle
+            PhotoAnnotationView *photoAnnotationView = (PhotoAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:kPhotoAnnotationViewIdentifier];
+            
+            // If we have to, create a new view
+            if (photoAnnotationView == nil) {
+                photoAnnotationView = [[PhotoAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kPhotoAnnotationViewIdentifier];
+            } else {
+                annotationView.annotation = annotation;
+            }
+            
+            annotationView.enabled = YES;
+            
+            // Set up the Right callout
+            [photoAnnotationView setCanShowCallout:YES];
+            
+            // Set a bunch of other stuff
+            photoAnnotationView.annotation = annotation;
+            [photoAnnotationView setEnabled:YES];
+            
+            // Set the right callout if needed
+            if ([assetClusterAnnotation totalPhotoMarkers] == 0) {
+                [photoAnnotationView setRightCalloutAccessoryView:nil];
+            } else if (photoAnnotationView.rightCalloutAccessoryView == nil) {
+                // add disclosure button if needed
+                UIButton *detailDisclosureButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+                [detailDisclosureButton setTag:1];
+                [photoAnnotationView setRightCalloutAccessoryView:detailDisclosureButton];
+            }
+            annotationView = photoAnnotationView;
+        }
+        else if ([prefs integerForKey:@"MarkType"] == 1) { // Pins
+            // See if we can reduce, reuse, recycle
+            MKPinAnnotationView *pinAnnotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:kPinAnnotationViewIdentifier];
+            
+            // If we have to, create a new view
+            if (pinAnnotationView == nil) {
+                pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kPinAnnotationViewIdentifier];
+            } else {
+                pinAnnotationView.annotation = annotation;
+            }
+
+            pinAnnotationView.enabled = YES;
+            pinAnnotationView.canShowCallout = YES;
+
+            // Set the right callout if needed
+            if ([assetClusterAnnotation totalPhotoMarkers] == 0) {
+                [pinAnnotationView setRightCalloutAccessoryView:nil];
+            } else if (annotationView.rightCalloutAccessoryView == nil) {
+                // add disclosure button if needed
+                [pinAnnotationView setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
+            }
+            if ([assetClusterAnnotation totalPhotoMarkers] == 1) {
+                pinAnnotationView.pinColor = MKPinAnnotationColorRed;
+            } else {
+                pinAnnotationView.pinColor = MKPinAnnotationColorGreen;
+            }
+            
+            annotationView = pinAnnotationView;
+        }
 	}
 
-    AssetClusterAnnotation *assetClusterAnnotation = (AssetClusterAnnotation *)annotation;
-    
-    // See if we can reduce, reuse, recycle
-    PhotoAnnotationView *photoAnnotationView = (PhotoAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:kAnnotationViewIdentifier];
-    
-    // If we have to, create a new view
-    if (photoAnnotationView == nil) {
-        photoAnnotationView = [[[PhotoAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kAnnotationViewIdentifier] autorelease];
-    }
-    
-    // Set up the Right callout
-    [photoAnnotationView setCanShowCallout:YES];
-    
-    // Set a bunch of other stuff
-    photoAnnotationView.annotation = annotation;
-    [photoAnnotationView setEnabled:YES];
-
-    // Set the right callout if needed
-    if ([assetClusterAnnotation totalPhotoMarkers] == 0) {
-		[photoAnnotationView setRightCalloutAccessoryView:nil];
-    } else if (photoAnnotationView.rightCalloutAccessoryView == nil) {
-        // add disclosur button if needed
-        UIButton *detailDisclosureButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-		[detailDisclosureButton setTag:1];
-		[photoAnnotationView setRightCalloutAccessoryView:detailDisclosureButton];
-    }
-
-    return photoAnnotationView;
+    return annotationView;
 }
-
 
 - (void)mapView:(MKMapView *)aMapView annotationView:(MKAnnotationView *)anAnnotationView calloutAccessoryControlTapped:(UIControl *)aControl {
 	if ([[anAnnotationView annotation] isKindOfClass:[AssetClusterAnnotation class]])
 	{
         AssetClusterAnnotation *assetClusterAnnotation = [anAnnotationView annotation];
-
         NSMutableArray *photos = [[NSMutableArray alloc] init];
+        NSMutableArray *thumbs = [[NSMutableArray alloc] init];
+        
         for (AssetAnnotation *annotation in [assetClusterAnnotation annotations]) {
-            if ([[annotation.alAsset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto]) {
-                Photo *photo = [[Photo alloc] initWithalAsset:annotation.alAsset];
-                
-                [photos addObject:photo];
-                [photo release];
-            }
+            [photos addObject:[MWPhoto photoWithURL:annotation.alAsset.defaultRepresentation.url]];
+            [thumbs addObject:[MWPhoto photoWithImage:[UIImage imageWithCGImage:annotation.alAsset.thumbnail]]];
         }
 
+        self.photos = photos;
+        self.thumbs = thumbs;
+        
+        // Create browser
+        MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+        browser.displayActionButton = YES;
+        browser.displayNavArrows = YES;
+        browser.displaySelectionButtons = NO;
+        browser.alwaysShowControls = YES;
+        browser.zoomPhotosToFill = YES;
         if ([photos count] > 1) {
-            ThumbsViewController *photoViewController = [[ThumbsViewController alloc] initwithPhotos:photos];
-            [self.navigationController pushViewController:photoViewController animated:YES];
-            [photoViewController release];
-        } else {
-            PhotoViewController *photoViewController = [[PhotoViewController alloc] initwithPhotos:photos];
-            [self.navigationController pushViewController:photoViewController animated:YES];
-            [photoViewController release];
+            browser.enableGrid = YES;
+            browser.startOnGrid = YES;
         }
+        else {
+            browser.enableGrid = NO;
+            browser.startOnGrid = NO;
+        }
+        [browser setCurrentPhotoIndex:0];
+
+        [self.navigationController pushViewController:browser animated:YES];
 	}
 }
 #pragma mark -
@@ -390,6 +426,8 @@
         return;
     }
 
+    needsToReloadClusterer = YES;
+
     SettingsViewController *settingsViewController = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -401,11 +439,9 @@
         [popoverController presentPopoverFromBarButtonItem:button
                                   permittedArrowDirections:UIPopoverArrowDirectionDown|UIPopoverArrowDirectionUp
                                                   animated:YES];
-        [navController release];
     } else {
         [self.navigationController pushViewController:settingsViewController animated:YES];
     }
-    [settingsViewController release];
 
 }
 
@@ -418,12 +454,29 @@
     [_locationManager startUpdatingLocation];
 }
 
+#pragma mark - MWPhotoBrowserDelegate
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _photos.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < _photos.count)
+        return _photos[index];
+    return nil;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
+    if (index < _thumbs.count)
+        return _thumbs[index];
+    return nil;
+}
 
 #pragma mark -
 #pragma mark UIPopoverControllerDelegate
 - (void) popoverControllerDidDismissPopover:(UIPopoverController *)apopoverController {
     if (apopoverController == popoverController) {
-        [popoverController release], popoverController = nil;
+        popoverController = nil;
     }
 }
 
@@ -432,11 +485,10 @@
 - (void)updateAssetsOnRegion:(NSValue *)value {
 	NSMutableArray *assetItemsArray = [_assetController getAssetsByCoordinateRegion:value];
 
-	if (![self annotationClusterer])
+	if ((![self annotationClusterer]) || needsToReloadClusterer)
 	{
-		AnnotationClusterer *anAnnotationClusterer = [[AnnotationClusterer alloc] initWithMapAndAnnotations:_mapView];
-		[self setAnnotationClusterer:anAnnotationClusterer];
-		[anAnnotationClusterer release], anAnnotationClusterer = nil;
+		[self setAnnotationClusterer:[[AnnotationClusterer alloc] initWithMapAndAnnotations:_mapView]];
+        needsToReloadClusterer = NO;
 	}
 	else
 	{

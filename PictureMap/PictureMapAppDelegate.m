@@ -42,7 +42,6 @@
 
     PictureMapViewController *pictureMapViewController = [[PictureMapViewController alloc] init];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:pictureMapViewController];
-    [pictureMapViewController release];
 
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
@@ -88,11 +87,5 @@
      */
 }
 
-- (void)dealloc
-{
-    [_window release];
-    [_navigationController release];
-    [super dealloc];
-}
 
 @end

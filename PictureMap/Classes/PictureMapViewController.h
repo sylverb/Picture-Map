@@ -25,12 +25,13 @@
 //
 
 #import "AssetController.h"
+#import "MWPhotoBrowser.h"
 
 #ifdef ADMOB
 #import "GADBannerView.h"
 #endif
 
-@interface PictureMapViewController : UIViewController <MKMapViewDelegate, UIPopoverControllerDelegate, CLLocationManagerDelegate
+@interface PictureMapViewController : UIViewController <MKMapViewDelegate, UIPopoverControllerDelegate, CLLocationManagerDelegate, MWPhotoBrowserDelegate
 #ifdef ADMOB
 , GADBannerViewDelegate
 #endif
@@ -45,11 +46,15 @@
 #ifdef ADMOB
     GADBannerView *bannerView_;
 #endif
+    BOOL needsToReloadClusterer;
 }
 
-@property (nonatomic, retain) MKMapView *mapView;
-@property (nonatomic, retain) AssetController *assetController;
-@property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) NSMutableArray *thumbs;
+
+@property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) AssetController *assetController;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 // This method is called as part of an operation queue. The |value| object is actually
 // a MKCoordinateRegion type.

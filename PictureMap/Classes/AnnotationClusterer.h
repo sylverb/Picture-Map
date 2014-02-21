@@ -29,13 +29,13 @@
 
 
 @interface AnnotationClusterer : NSObject {
-  NSMutableArray *clusters; //Annotations in a cluster.
-  MKMapView *mapView;
-  int gridSize; //size of the annotation cluster in pixels on the map.
+    NSMutableArray *clusters; //Annotations in a cluster.
+    MKMapView *mapView;
+    NSUInteger gridSize; //size of the annotation cluster in pixels on the map.
 }
 
-@property(nonatomic,retain) MKMapView *mapView;
-@property(nonatomic,retain) NSMutableArray *clusters;
+@property(nonatomic,strong) MKMapView *mapView;
+@property(nonatomic,strong) NSMutableArray *clusters;
 
 - (id)initWithMapAndAnnotations:(MKMapView *)mapView;
 
@@ -48,9 +48,9 @@
 -(void) removeAnnotations;
 
 // Total number of clusters that exist.
--(int) totalClusters;
+-(NSUInteger) totalClusters;
 
 // Total number annotations
--(int) totalAnnotations;
+-(NSUInteger) totalAnnotations;
 
 @end

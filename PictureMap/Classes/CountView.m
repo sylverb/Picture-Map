@@ -58,7 +58,7 @@
 		return CGSizeZero;
 	
 	UIFont *font = [UIFont boldSystemFontOfSize:16.];
-	NSString *numberString = [NSString stringWithFormat:@"%u", (_pictureCount ? _pictureCount : _movieCount)];
+	NSString *numberString = [NSString stringWithFormat:@"%lu", (unsigned long)(_pictureCount ? _pictureCount : _movieCount)];
 	CGSize textSize = [numberString sizeWithFont:font];
 	
 	CGFloat radius = 10.;
@@ -70,7 +70,7 @@
 	if (_movieCount && _pictureCount) {
 		CGSize previousTextSize = textSize;
 		
-		numberString = [NSString stringWithFormat:@"%u", _movieCount];
+		numberString = [NSString stringWithFormat:@"%lu", (unsigned long)_movieCount];
 		textSize = [numberString sizeWithFont:font];
 		
 		enclosingRect = CGRectMake(previousTextSize.width + (radius * 1.2), 0., MAX(textSize.width + radius, radius * 2.), radius * 2.);
@@ -87,7 +87,7 @@
 		return;
 	
 	UIFont *font = [UIFont boldSystemFontOfSize:16.];
-	NSString *numberString = [NSString stringWithFormat:@"%u", (_pictureCount ? _pictureCount : _movieCount)];
+	NSString *numberString = [NSString stringWithFormat:@"%lu", (unsigned long)(_pictureCount ? _pictureCount : _movieCount)];
 	CGSize textSize = [numberString sizeWithFont:font];
 	
 	CGFloat radius = 10.;
@@ -128,7 +128,7 @@
 	if (_movieCount && _pictureCount) {
 		CGSize previousTextSize = textSize;
 		
-		numberString = [NSString stringWithFormat:@"%u", _movieCount];
+		numberString = [NSString stringWithFormat:@"%lu", (unsigned long)_movieCount];
 		textSize = [numberString sizeWithFont:font];
 		
 		enclosingRect = CGRectMake(previousTextSize.width + (radius * 1.2), 0., MAX(textSize.width + radius, radius * 2.), radius * 2.);

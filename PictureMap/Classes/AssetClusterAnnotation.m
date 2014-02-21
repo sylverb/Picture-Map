@@ -58,13 +58,13 @@
     NSInteger totalPhotos = [self totalPhotoMarkers];
     NSInteger totalvideos = [self totalVideoMarkers];
     if ([self totalPhotoMarkers] !=0) {
-        [annotationTitle appendFormat:@"%d %@", totalPhotos, (totalPhotos == 1)?NSLocalizedString(@"photo",nil):NSLocalizedString(@"photos",nil)];
+        [annotationTitle appendFormat:@"%ld %@", (long)totalPhotos, (totalPhotos == 1)?NSLocalizedString(@"photo",nil):NSLocalizedString(@"photos",nil)];
     }
     if (([self totalPhotoMarkers] !=0) && ([self totalVideoMarkers] !=0)) {
         [annotationTitle appendString:@", "];
     }
     if ([self totalVideoMarkers] !=0) {
-        [annotationTitle appendFormat:@"%d %@", totalvideos, (totalvideos == 1)?NSLocalizedString(@"video",nil):NSLocalizedString(@"videos",nil)];
+        [annotationTitle appendFormat:@"%ld %@", (long)totalvideos, (totalvideos == 1)?NSLocalizedString(@"video",nil):NSLocalizedString(@"videos",nil)];
     }
 	return annotationTitle;
 }
@@ -72,16 +72,15 @@
 - (NSString*) subtitle {
 	NSString *result = nil;
 	if ([annotations count] == 1) {
-        AssetAnnotation *assetAnnotation = (AssetAnnotation *)[annotations objectAtIndex:0];
+        AssetAnnotation *assetAnnotation = (AssetAnnotation *)annotations[0];
         
 		NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 		[outputFormatter setDateStyle:NSDateFormatterFullStyle];
 		[outputFormatter setTimeStyle:NSDateFormatterMediumStyle];
         
 		result = [outputFormatter stringFromDate:[assetAnnotation.alAsset valueForProperty:@"ALAssetPropertyDate"]];
-		[outputFormatter release];
 	} else {
-        AssetAnnotation *oldestAssetAnnotation = (AssetAnnotation *)[annotations objectAtIndex:0];
+        AssetAnnotation *oldestAssetAnnotation = (AssetAnnotation *)annotations[0];
         AssetAnnotation *latestAssetAnnotation = (AssetAnnotation *)[annotations lastObject];
 
         NSDate *oldestDate = [oldestAssetAnnotation.alAsset valueForProperty:@"ALAssetPropertyDate"];
@@ -98,7 +97,6 @@
 			[outputFormatter setDateStyle:NSDateFormatterFullStyle];
 			result = [outputFormatter stringFromDate:latestDate];
 		}
-		[outputFormatter release];
 	}
 	return result;
 }
@@ -134,12 +132,12 @@
   return NO;
 }
 
--(int) totalMarkers {
+-(NSUInteger) totalMarkers {
 	return [annotations count];
 }
 
--(int) totalPhotoMarkers {
-    int photoCount = 0;
+-(NSUInteger) totalPhotoMarkers {
+    NSUInteger photoCount = 0;
     for (AssetAnnotation *assetAnnotation in annotations) {
         if ([assetAnnotation.alAsset valueForProperty:@"ALAssetPropertyType"] == ALAssetTypePhoto) {
             photoCount++;
@@ -148,8 +146,8 @@
     return photoCount;
 }
 
--(int) totalVideoMarkers {
-    int videoCount = 0;
+-(NSUInteger) totalVideoMarkers {
+    NSUInteger videoCount = 0;
     for (AssetAnnotation *assetAnnotation in annotations) {
         if ([assetAnnotation.alAsset valueForProperty:@"ALAssetPropertyType"] == ALAssetTypeVideo) {
             videoCount++;
@@ -159,11 +157,4 @@
 }
 
 
--(void) dealloc {
-	[mapView release];
-	[clusterer release];
-	[annotations release];
-    [thumbnail release];
-	[super dealloc];
-}
 @end

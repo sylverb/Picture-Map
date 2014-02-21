@@ -36,7 +36,7 @@
     if([url.scheme isEqualToString:@"assets-library"]) {
         NSRange range = [url.absoluteString rangeOfString:@"?"];
         if(range.location != NSNotFound) {
-            URLParser *parser = [[[URLParser alloc] initWithURLString:url.absoluteString] autorelease];
+            URLParser *parser = [[URLParser alloc] initWithURLString:url.absoluteString];
             
             NSString* extention = [[parser valueForVariable:@"ext"] lowercaseString];
             NSString* identifier = [parser valueForVariable:@"id"];

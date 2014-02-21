@@ -34,7 +34,7 @@
     BOOL allAlbumsSelected;
 }
 
-@property (nonatomic, retain) NSMutableArray *assetGroups;
-@property (nonatomic, retain) NSMutableArray *assets;
+@property (nonatomic, strong) NSMutableArray *assetGroups;
+@property (nonatomic, strong) NSMutableArray *assets;
 
 @end

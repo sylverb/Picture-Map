@@ -84,7 +84,6 @@
 			countView.alpha = annotationAlpha;
             
 			[self addSubview:countView];
-			[countView release];
 		}
 	} else {
 		self.frame = CGRectMake(0,0,0,0);
@@ -93,8 +92,7 @@
 }
 
 - (void)dealloc {
-	[countView release], countView = nil;
-	[super dealloc];
+	countView = nil;
 }
 
 @end
