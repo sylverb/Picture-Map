@@ -11,7 +11,7 @@ Basically I rewrote everything from scratch by using different code found here a
 
 Code used in Picture-Map :
 - The application is based on MapPointClustering done by vladzz : https://github.com/vladzz/MapPointClusteringPrototypeIphone
-- It is using three20 modified by me to show pictures from the photo libraries (ALAsset) : https://github.com/sylverb/three20
+- It is using MWPhotoBrowser to present photos
 - It is based on various source code samples found on stackoverflow.com (mainly to deal with ALAsset)
 
 Have fun,

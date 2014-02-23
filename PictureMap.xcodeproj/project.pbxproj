@@ -49,6 +49,9 @@
 		D5086CA318B6B52F00909470 /* MWTapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5086C7B18B6B52F00909470 /* MWTapDetectingView.m */; };
 		D5086CA418B6B52F00909470 /* MWZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5086C7D18B6B52F00909470 /* MWZoomingScrollView.m */; };
 		D5086CA618B6B83000909470 /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D5086CA518B6B83000909470 /* MWPhotoBrowser.bundle */; };
+		D59A7CA818B7376D00CAE3F4 /* Icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59A7CA718B7376D00CAE3F4 /* Icon-ios7@2x.png */; };
+		D59A7CAA18B7380F00CAE3F4 /* Icon-ipad-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = D59A7CA918B7380F00CAE3F4 /* Icon-ipad-ios7.png */; };
+		D59A7CAC18B738BC00CAE3F4 /* Icon-ipad-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59A7CAB18B738BC00CAE3F4 /* Icon-ipad-ios7@2x.png */; };
 		F9036D1713B130D200A32774 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9036D1513B130D200A32774 /* Localizable.strings */; };
 		F90AF4A613B9947D009E1FD8 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = F90AF4A513B9947D009E1FD8 /* Entitlements.plist */; };
 		F9164C0F1519213500CAF364 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = F9164C0A1519213500CAF364 /* UIImage+Alpha.m */; };
@@ -175,6 +178,9 @@
 		D5086C7C18B6B52F00909470 /* MWZoomingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWZoomingScrollView.h; sourceTree = "<group>"; };
 		D5086C7D18B6B52F00909470 /* MWZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWZoomingScrollView.m; sourceTree = "<group>"; };
 		D5086CA518B6B83000909470 /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MWPhotoBrowser.bundle; path = Ressources/MWPhotoBrowser.bundle; sourceTree = "<group>"; };
+		D59A7CA718B7376D00CAE3F4 /* Icon-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-ios7@2x.png"; path = "Ressources/Icon-ios7@2x.png"; sourceTree = "<group>"; };
+		D59A7CA918B7380F00CAE3F4 /* Icon-ipad-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-ipad-ios7.png"; path = "Ressources/Icon-ipad-ios7.png"; sourceTree = "<group>"; };
+		D59A7CAB18B738BC00CAE3F4 /* Icon-ipad-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-ipad-ios7@2x.png"; path = "Ressources/Icon-ipad-ios7@2x.png"; sourceTree = "<group>"; };
 		F9036D1613B130D200A32774 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F9036D1813B130EC00A32774 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F90AF4A513B9947D009E1FD8 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
@@ -552,6 +558,9 @@
 				F93F33F013B7204B004BDBF6 /* iTunesArtwork */,
 				F93F33EA13B7204B004BDBF6 /* Icon.png */,
 				F93F33EF13B7204B004BDBF6 /* Icon@2x.png */,
+				D59A7CA718B7376D00CAE3F4 /* Icon-ios7@2x.png */,
+				D59A7CA918B7380F00CAE3F4 /* Icon-ipad-ios7.png */,
+				D59A7CAB18B738BC00CAE3F4 /* Icon-ipad-ios7@2x.png */,
 				F9164C4B1519300800CAF364 /* Icon-ipad.png */,
 				F9164C4C1519300800CAF364 /* Icon-ipad@2x.png */,
 				F93F33EC13B7204B004BDBF6 /* Icon-Small.png */,
@@ -593,6 +602,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "EADS DS";
+				TargetAttributes = {
+					F91B92AD13AE8D7000271FCE = {
+						DevelopmentTeam = 7RQA4UEVL6;
+					};
+				};
 			};
 			buildConfigurationList = F91B92A813AE8D7000271FCE /* Build configuration list for PBXProject "PictureMap" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -624,8 +638,11 @@
 				F93F33F113B7204B004BDBF6 /* Icon.png in Resources */,
 				F93F33F313B7204B004BDBF6 /* Icon-Small.png in Resources */,
 				D5086C8E18B6B52F00909470 /* LICENSE in Resources */,
+				D59A7CA818B7376D00CAE3F4 /* Icon-ios7@2x.png in Resources */,
 				F93F33F413B7204B004BDBF6 /* Icon-Small-50.png in Resources */,
+				D59A7CAA18B7380F00CAE3F4 /* Icon-ipad-ios7.png in Resources */,
 				F93F33F513B7204B004BDBF6 /* Icon-Small@2x.png in Resources */,
+				D59A7CAC18B738BC00CAE3F4 /* Icon-ipad-ios7@2x.png in Resources */,
 				D5086C8018B6B52F00909470 /* README.mdown in Resources */,
 				F93F33F613B7204B004BDBF6 /* Icon@2x.png in Resources */,
 				F93F33F713B7204B004BDBF6 /* iTunesArtwork in Resources */,
@@ -729,18 +746,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sylver Bruneau";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sylver Bruneau";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "D6B52AB9-CA19-403C-BB4C-0D66732E249C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6B52AB9-CA19-403C-BB4C-0D66732E249C";
+				PROVISIONING_PROFILE = "A99D4F32-ED63-4EAE-9BD8-61403E2F2E6B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A99D4F32-ED63-4EAE-9BD8-61403E2F2E6B";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -752,7 +769,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sylver Bruneau";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -765,7 +783,8 @@
 					"$(SRCROOT)/PictureMap/Classes/GAD",
 				);
 				PRODUCT_NAME = PictureMap;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6B52AB9-CA19-403C-BB4C-0D66732E249C";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A99D4F32-ED63-4EAE-9BD8-61403E2F2E6B";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -784,11 +803,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "B5AD94D4-74EE-4310-99FB-5E4A6236B32E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B5AD94D4-74EE-4310-99FB-5E4A6236B32E";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -800,6 +819,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -812,6 +833,7 @@
 					"$(SRCROOT)/PictureMap/Classes/GAD",
 				);
 				PRODUCT_NAME = PictureMap;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -822,6 +844,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -831,7 +854,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -844,14 +867,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -865,6 +888,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -879,6 +903,7 @@
 					"$(SRCROOT)/PictureMap/Classes/GAD",
 				);
 				PRODUCT_NAME = PictureMap;
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -890,6 +915,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -902,6 +929,7 @@
 					"$(SRCROOT)/PictureMap/Classes/GAD",
 				);
 				PRODUCT_NAME = PictureMap;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
