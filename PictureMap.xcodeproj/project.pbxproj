@@ -10,7 +10,6 @@
 		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
 		D455C8CB124558F8A4A6422F /* libPods-PictureMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A94D331496421D0D3841566F /* libPods-PictureMap.a */; };
 		D5086BA618B6B0E100909470 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5086BA518B6B0E100909470 /* ImageIO.framework */; };
-		D5086CA618B6B83000909470 /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D5086CA518B6B83000909470 /* MWPhotoBrowser.bundle */; };
 		D59A7CA818B7376D00CAE3F4 /* Icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59A7CA718B7376D00CAE3F4 /* Icon-ios7@2x.png */; };
 		D59A7CAA18B7380F00CAE3F4 /* Icon-ipad-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = D59A7CA918B7380F00CAE3F4 /* Icon-ipad-ios7.png */; };
 		D59A7CAC18B738BC00CAE3F4 /* Icon-ipad-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59A7CAB18B738BC00CAE3F4 /* Icon-ipad-ios7@2x.png */; };
@@ -62,7 +61,6 @@
 		A94D331496421D0D3841566F /* libPods-PictureMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PictureMap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBEDBF4DD743A6912B1A85EC /* Pods-PictureMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMap/Pods-PictureMap.debug.xcconfig"; sourceTree = "<group>"; };
 		D5086BA518B6B0E100909470 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		D5086CA518B6B83000909470 /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MWPhotoBrowser.bundle; path = Ressources/MWPhotoBrowser.bundle; sourceTree = "<group>"; };
 		D59A7CA718B7376D00CAE3F4 /* Icon-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-ios7@2x.png"; path = "Ressources/Icon-ios7@2x.png"; sourceTree = "<group>"; };
 		D59A7CA918B7380F00CAE3F4 /* Icon-ipad-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-ipad-ios7.png"; path = "Ressources/Icon-ipad-ios7.png"; sourceTree = "<group>"; };
 		D59A7CAB18B738BC00CAE3F4 /* Icon-ipad-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-ipad-ios7@2x.png"; path = "Ressources/Icon-ipad-ios7@2x.png"; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 		F91B92B913AE8D7000271FCE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D5086CA518B6B83000909470 /* MWPhotoBrowser.bundle */,
 				F9036D1513B130D200A32774 /* Localizable.strings */,
 				F91B92BA13AE8D7000271FCE /* PictureMap-Info.plist */,
 				F91B92BB13AE8D7000271FCE /* InfoPlist.strings */,
@@ -416,7 +413,6 @@
 				F9164C4D1519300800CAF364 /* Icon-ipad.png in Resources */,
 				F9164C4E1519300800CAF364 /* Icon-ipad@2x.png in Resources */,
 				F94DB57D161038870097C51C /* Default-568h@2x.png in Resources */,
-				D5086CA618B6B83000909470 /* MWPhotoBrowser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
