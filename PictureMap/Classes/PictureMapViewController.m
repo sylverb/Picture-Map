@@ -316,10 +316,8 @@
             photoAnnotationView.annotation = annotation;
             [photoAnnotationView setEnabled:YES];
             
-            // Set the right callout if needed
-            if ([assetClusterAnnotation totalPhotoMarkers] == 0) {
-                [photoAnnotationView setRightCalloutAccessoryView:nil];
-            } else if (photoAnnotationView.rightCalloutAccessoryView == nil) {
+            // Set the right callout
+            if (photoAnnotationView.rightCalloutAccessoryView == nil) {
                 // add disclosure button if needed
                 UIButton *detailDisclosureButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
                 [detailDisclosureButton setTag:1];
@@ -369,8 +367,16 @@
         NSMutableArray *thumbs = [[NSMutableArray alloc] init];
         
         for (AssetAnnotation *annotation in [assetClusterAnnotation annotations]) {
-            [photos addObject:[MWPhoto photoWithURL:annotation.alAsset.defaultRepresentation.url]];
-            [thumbs addObject:[MWPhoto photoWithImage:[UIImage imageWithCGImage:annotation.alAsset.aspectRatioThumbnail]]];
+            if ([annotation.alAsset valueForProperty:@"ALAssetPropertyType"] == ALAssetTypePhoto)
+            {
+                [photos addObject:[MWPhoto photoWithURL:annotation.alAsset.defaultRepresentation.url]];
+                [thumbs addObject:[MWPhoto photoWithImage:[UIImage imageWithCGImage:annotation.alAsset.aspectRatioThumbnail]]];
+            }
+            else if ([annotation.alAsset valueForProperty:@"ALAssetPropertyType"] == ALAssetTypeVideo)
+            {
+                [photos addObject:[MWPhoto videoWithURL:annotation.alAsset.defaultRepresentation.url]];
+                [thumbs addObject:[MWPhoto photoWithImage:[UIImage imageWithCGImage:annotation.alAsset.aspectRatioThumbnail]]];
+            }
         }
 
         self.photos = photos;
