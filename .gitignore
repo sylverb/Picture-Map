@@ -5,3 +5,11 @@ PictureMap.xcodeproj/*.perspectivev3
 PictureMap.xcodeproj/*.mode1v3
 PictureMap.xcodeproj/project.xcworkspace
 PictureMap.xcodeproj/xcuserdata
+PictureMap.xcworkspace/xcuserdata
+PictureMapFree.xcodeproj/*.pbxuser
+PictureMapFree.xcodeproj/*.perspectivev3
+PictureMapFree.xcodeproj/*.mode1v3
+PictureMapFree.xcodeproj/project.xcworkspace
+PictureMapFree.xcodeproj/xcuserdata
+PictureMapFree.xcworkspace/xcuserdata
+pods/
