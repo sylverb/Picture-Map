@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
+		95F2C1091D6253F600AFF5F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95F2C1081D6253F600AFF5F8 /* Images.xcassets */; };
+		95FFE2EB1D625AEE00206607 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FFE2EA1D625AEE00206607 /* Launch Screen.storyboard */; };
 		D455C8CB124558F8A4A6422F /* libPods-PictureMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A94D331496421D0D3841566F /* libPods-PictureMap.a */; };
 		D5086BA618B6B0E100909470 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5086BA518B6B0E100909470 /* ImageIO.framework */; };
 		D59A7CA818B7376D00CAE3F4 /* Icon-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D59A7CA718B7376D00CAE3F4 /* Icon-ios7@2x.png */; };
@@ -57,6 +59,8 @@
 /* Begin PBXFileReference section */
 		320AF8492C47A4D819F7C450 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4D7832885F2F86B0E158DA13 /* Pods-PictureMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMap/Pods-PictureMap.release.xcconfig"; sourceTree = "<group>"; };
+		95F2C1081D6253F600AFF5F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		95FFE2EA1D625AEE00206607 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Ressources/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		982622A1D6CCD90BEEFBFAD3 /* Pods-PictureMap.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMap.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMap/Pods-PictureMap.adhoc.xcconfig"; sourceTree = "<group>"; };
 		A94D331496421D0D3841566F /* libPods-PictureMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PictureMap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBEDBF4DD743A6912B1A85EC /* Pods-PictureMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PictureMap/Pods-PictureMap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 			children = (
 				F91B934413AE8E2300271FCE /* Classes */,
 				F91B94AC13AE9F8500271FCE /* Ressources */,
+				95F2C1081D6253F600AFF5F8 /* Images.xcassets */,
 				F91B92B913AE8D7000271FCE /* Supporting Files */,
 			);
 			path = PictureMap;
@@ -329,6 +334,7 @@
 				F99A4F0613B7D7920025EB7E /* locate@2x.png */,
 				F91B94AD13AE9FA700271FCE /* settings.png */,
 				F91B94AE13AE9FA700271FCE /* settings@2x.png */,
+				95FFE2EA1D625AEE00206607 /* Launch Screen.storyboard */,
 			);
 			name = Ressources;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F91B92BD13AE8D7000271FCE /* InfoPlist.strings in Resources */,
+				95F2C1091D6253F600AFF5F8 /* Images.xcassets in Resources */,
 				F91B94AF13AE9FA700271FCE /* settings.png in Resources */,
 				F91B94B013AE9FA700271FCE /* settings@2x.png in Resources */,
 				F9036D1713B130D200A32774 /* Localizable.strings in Resources */,
@@ -412,6 +419,7 @@
 				F90AF4A613B9947D009E1FD8 /* Entitlements.plist in Resources */,
 				F9164C4D1519300800CAF364 /* Icon-ipad.png in Resources */,
 				F9164C4E1519300800CAF364 /* Icon-ipad@2x.png in Resources */,
+				95FFE2EB1D625AEE00206607 /* Launch Screen.storyboard in Resources */,
 				F94DB57D161038870097C51C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +564,8 @@
 			baseConfigurationReference = F357FB09FE6340FD97BFF952 /* Pods-PictureMap.distribution.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -566,10 +576,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "PictureMap/PictureMap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/PictureMap/Classes/GAD",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sylver.picture-map";
 				PRODUCT_NAME = PictureMap;
 				PROVISIONING_PROFILE = "";
@@ -624,6 +631,8 @@
 			baseConfigurationReference = 982622A1D6CCD90BEEFBFAD3 /* Pods-PictureMap.adhoc.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -634,10 +643,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "PictureMap/PictureMap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/PictureMap/Classes/GAD",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sylver.picture-map";
 				PRODUCT_NAME = PictureMap;
 				PROVISIONING_PROFILE = "";
@@ -728,6 +734,8 @@
 			baseConfigurationReference = CBEDBF4DD743A6912B1A85EC /* Pods-PictureMap.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -739,10 +747,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "PictureMap/PictureMap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/PictureMap/Classes/GAD",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sylver.picture-map";
 				PRODUCT_NAME = PictureMap;
 				PROVISIONING_PROFILE = "";
@@ -757,6 +762,8 @@
 			baseConfigurationReference = 4D7832885F2F86B0E158DA13 /* Pods-PictureMap.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -767,10 +774,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "PictureMap/PictureMap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/PictureMap/Classes/GAD",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sylver.picture-map";
 				PRODUCT_NAME = PictureMap;
 				PROVISIONING_PROFILE = "";
