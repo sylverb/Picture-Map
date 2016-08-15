@@ -370,7 +370,7 @@
         
         for (AssetAnnotation *annotation in [assetClusterAnnotation annotations]) {
             [photos addObject:[MWPhoto photoWithURL:annotation.alAsset.defaultRepresentation.url]];
-            [thumbs addObject:[MWPhoto photoWithImage:[UIImage imageWithCGImage:annotation.alAsset.thumbnail]]];
+            [thumbs addObject:[MWPhoto photoWithImage:[UIImage imageWithCGImage:annotation.alAsset.aspectRatioThumbnail]]];
         }
 
         self.photos = photos;
