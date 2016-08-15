@@ -112,7 +112,7 @@
 -(UIImage *) thumbnail {
     if (thumbnail == nil) {
         AssetAnnotation *assetAnnotation = (AssetAnnotation *)[annotations lastObject];
-        self.thumbnail = [UIImage imageWithCGImage:[assetAnnotation.alAsset thumbnail]];
+        self.thumbnail = [UIImage imageWithCGImage:[assetAnnotation.alAsset aspectRatioThumbnail]];
     }
     return thumbnail;
 }

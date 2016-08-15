@@ -56,9 +56,11 @@
 		self.backgroundColor = [UIColor clearColor];
         self.alpha = annotationAlpha;
         
-        UIImage *imageFromFile = [[assetClusterAnnotation.thumbnail roundedCornerImage:15 borderSize:0] resizedImage:CGSizeMake(kWidth, kHeight)
-                                                           interpolationQuality:kCGInterpolationHigh];
-        
+        UIImage *imageFromFile = [assetClusterAnnotation.thumbnail thumbnailImage:kWidth
+                                                                transparentBorder:0
+                                                                     cornerRadius:15
+                                                             interpolationQuality:kCGInterpolationHigh];
+
         self.image = imageFromFile;
 
         /* Remove previous CountView if needed */
